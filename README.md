@@ -1,6 +1,17 @@
 # 💡 Iluminación Inteligente
 
+<table>
+  <tr>
+    <td>
+
 Proyecto de la materia **Lenguaje de Programación Visual**, centrado en el desarrollo de un sistema de **iluminación inteligente** que controla automáticamente luces según la **presencia de personas** y los niveles de **luz ambiental**.
+
+</td>
+    <td>
+      <img src="https://cdn.pixabay.com/animation/2022/07/31/05/34/05-34-05-841_512.gif" width="200px"/>
+    </td>
+  </tr>
+</table>
 
 ## 🧠 Descripción
 
@@ -23,4 +34,3 @@ El sistema detecta cuando una persona ingresa a un espacio y verifica si la ilum
 - ✔️ Control automático y/o manual desde la PC.
 
 ## 🧩 Estructura del proyecto
-
