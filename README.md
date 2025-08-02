@@ -1,6 +1,6 @@
 # 💡 Iluminación Inteligente
 
- 👉 Visítala aquí: [Iluminación Inteligente Web](https://luchoaguero44.github.io/Iluminacion-Inteligente/)
+ 👉 Visítala aquí: [Iluminación Inteligente Web](https://luchoaguero44.github.io/Iluminacion_Inteligente/index.html#inicio)
  
 <table>
   <tr>
