@@ -1,4 +1,9 @@
 <!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
 		<title>Iluminación Inteligente</title>
@@ -7,71 +12,131 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload">
-		<!-- Header -->
-		<header id="header">
-			<h1>Iluminación Inteligente</h1>
-			<p>Control automático de luces basado en presencia y luz ambiente</p>
-		</header>
+	<body class="homepage is-preload">
+		<div id="page-wrapper">
 
-		<!-- Main -->
-		<section id="main">
-			<div class="inner">
-				<header class="major">
-					<h2>Descripción del Proyecto</h2>
-				</header>
-				<p>Este proyecto desarrollado en la materia <strong>Lenguaje de Programación Visual</strong> implementa un sistema de control de luces basado en sensores de movimiento (PIR) y sensores de luz (LDR). Utilizando LabVIEW y una placa Arduino, el sistema detecta la presencia de personas y la cantidad de luz natural para encender o apagar las luces automáticamente.</p>
+			<!-- Header -->
+				<div id="header">
 
-				<hr>
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Iluminación Inteligente</a></h1>
+								<hr />
+								<p>Proyecto de la materia Lenguaje de Programación Visual</p>
+							</header>
+							<footer>
+								<a href="#banner" class="button circled scrolly">Comenzar</a>
+							</footer>
+						</div>
 
-				<header class="major">
-					<h2>Tecnologías y Herramientas</h2>
-				</header>
-				<ul>
-					<li>🔧 <strong>LabVIEW</strong></li>
-					<li>💡 Sensor de luz <strong>(LDR)</strong></li>
-					<li>👣 Sensor de movimiento <strong>(PIR)</strong></li>
-					<li>🖥️ Tarjeta controladora (Arduino u otra compatible)</li>
-					<li>💻 Comunicación serial entre hardware y software</li>
-				</ul>
+					<!-- Nav -->
+<nav id="nav">
+	<ul>
+		<li class="current"><a href="#inicio">Inicio</a></li>
+		<li><a href="#codigos">Códigos</a></li>
+		<li><a href="#informacion">Información</a></li>
+		<li><a href="#nosotros">Nosotros</a></li>
+	</ul>
+</nav>
 
-				<hr>
+				</div>
 
-				<header class="major">
-					<h2>Funcionalidades</h2>
-				</header>
-				<ul>
-					<li>✔️ Detección de movimiento para encender/apagar luces.</li>
-					<li>✔️ Medición de luz ambiente con LDR.</li>
-					<li>✔️ Umbrales configurables para nivel de iluminación.</li>
-					<li>✔️ Interfaz gráfica para monitoreo en tiempo real.</li>
-					<li>✔️ Control automático y/o manual desde la PC.</li>
-				</ul>
+			<!-- Banner -->
+				<section id="banner" style="display:flex; align-items:center; justify-content:center; gap:20px; padding: 3em 1em;">
+					<header style="flex:1;">
+						<h2>Control automático de luces según <strong>presencia</strong> y <strong>luz ambiente</strong>.</h2>
+						<p>Optimiza el consumo energético detectando personas y midiendo la luz natural.</p>
+					</header>
+					<img src="https://cdn.pixabay.com/animation/2022/07/31/05/34/05-34-05-841_512.gif" width="80" alt="GIF Iluminación Inteligente" />
+				</section>
 
-				<hr>
+			<!-- Main -->
+				<div class="wrapper style2">
 
-				<header class="major">
+					<article id="main" class="container special">
+
+						<section>
+							<header>
+								<h2>Descripción del Proyecto</h2>
+							</header>
+							<p>
+								El sistema detecta cuando una persona ingresa a un espacio y verifica si la iluminación natural es insuficiente. En ese caso, enciende las luces automáticamente, optimizando el consumo energético. También las apaga cuando no hay nadie presente o cuando la luz ambiente es suficiente.
+							</p>
+						</section>
+
+						<section>
+							<header>
+								<h2>Componentes Utilizados</h2>
+							</header>
+							<ul>
+								<li>🔧 <strong>LabVIEW</strong> (entorno visual)</li>
+								<li>💡 <strong>LDR</strong> - Sensor de luz</li>
+								<li>👣 <strong>PIR</strong> - Sensor de movimiento</li>
+								<li>🖥️ <strong>Arduino UNO</strong></li>
+								<li>💻 Comunicación Serial (USB)</li>
+							</ul>
+						</section>
+
+						<section>
+							<header>
+								<h2>¿Cómo Funciona?</h2>
+							</header>
+							<p>
+								El sistema compara el nivel de iluminación del entorno con un umbral configurable. Si la presencia es detectada por el sensor PIR y la luz natural es baja, se activan las luces. Cuando no hay presencia, o la iluminación ambiente es suficiente, las luces se apagan automáticamente.
+							</p>
+						</section>
+
+					</article>
+
+				</div>
+
+<!-- Footer -->
+<div id="footer">
+	<div class="container">
+		<div class="row">
+			<section class="col-12">
+				<header>
 					<h2>Créditos</h2>
 				</header>
-				<p><strong>
-					<a href="https://github.com/LuchoAguero44" target="_blank" rel="noopener noreferrer">Luis Agüero</a>, 
-					<a href="https://github.com/AreliAyala" target="_blank" rel="noopener noreferrer">Arelí Ayala</a>, 
-					<a href="https://github.com/FranDU98" target="_blank" rel="noopener noreferrer">Francisco Duarte</a>, 
-					<a href="https://github.com/aldspals77" target="_blank" rel="noopener noreferrer">Aldo Palacios</a>
-				</strong></p>
+				<p>
+					Desarrollado por<br>
+					<strong>
+						<a href="https://github.com/LuchoAguero44" target="_blank" rel="noopener noreferrer">Luis Agüero</a><br>
+						<a href="https://github.com/AreliAyala" target="_blank" rel="noopener noreferrer">Arelí Ayala</a><br>
+						<a href="https://github.com/FranDU98" target="_blank" rel="noopener noreferrer">Francisco Duarte</a><br>
+						<a href="https://github.com/aldspals77" target="_blank" rel="noopener noreferrer">Aldo Palacios</a>
+					</strong>
+					<br><br>
+					Estudiantes de Ingeniería Mecatrónica
+				</p>
+			</section>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-12">
+				<!-- Copyright -->
+				<div class="copyright">
+					<ul class="menu">
+						<li>&copy; 2025 Iluminación Inteligente. Todos los derechos reservados.</li>
+						<li>Diseño: <a href="http://html5up.net" target="_blank" rel="noopener noreferrer">HTML5 UP</a></li>
+					</ul>
+				</div>
 			</div>
-		</section>
+		</div>
+	</div>
+</div>
 
-		<!-- Footer -->
-		<footer id="footer">
-			<p>&copy; Iluminación Inteligente. Diseño adaptado de Helios por HTML5 UP.</p>
-		</footer>
-
+								
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
 	</body>
 </html>
