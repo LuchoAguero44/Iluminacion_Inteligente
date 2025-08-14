@@ -1,13 +1,19 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Códigos - Iluminación Inteligente</title>
+    <title>Iluminación Inteligente</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+
+        p {
+            color: inherit;
+        }
+    </style>
 </head>
-<body class="left-sidebar is-preload">
+<body class="homepage is-preload">
     <div id="page-wrapper">
 
         <!-- Header -->
@@ -17,8 +23,12 @@
             <div class="inner">
                 <header>
                     <h1><a href="index.html" id="logo">Iluminación Inteligente</a></h1>
-                    <p>Sistema de control automático basado en sensores</p>
+                    <hr />
+                    <p>Proyecto de la materia Lenguaje de Programación Visual</p>
                 </header>
+                <footer>
+                    <a href="#banner" class="button circled scrolly">Comenzar</a>
+                </footer>
             </div>
 
             <!-- Nav -->
@@ -30,69 +40,86 @@
                     <li><a href="nosotros.html">Nosotros</a></li>
                 </ul>
             </nav>
+
         </div>
 
+        <!-- Banner -->
+        <section id="banner" style="display:flex; align-items:center; justify-content:center; gap:20px; padding: 3em 1em;">
+            <header style="flex:1;">
+                <h2>Control automático de luces según <strong>presencia</strong> y <strong>luz ambiente</strong>.</h2>
+                <p>Optimiza el consumo energético detectando personas y midiendo la luz natural.</p>
+            </header>
+        </section>
+
         <!-- Main -->
-        <div class="wrapper style1">
-            <div class="container">
-                <div class="row gtr-200">
-                    <div class="col-12" id="content">
-                        <article id="main">
-                            <header>
-                                <h2>Códigos del Proyecto</h2>
-                                <p>Descripción general de los códigos utilizados en el sistema</p>
-                            </header>
+        <div class="wrapper style2">
 
-                            <section>
-                                <header>
-                                    <h3>1. Código de Arduino</h3>
-                                </header>
-                                <p>AGREGAR INFORMACIÓN</p>
-                            </section>
+            <article id="main" class="container special">
 
-                            <section>
-                                <header>
-                                    <h3>2. Código de comunicación con LabVIEW</h3>
-                                </header>
-                                <p>AGREGAR INFORMACIÓN</p>
-                            </section>
+                <section>
+                    <header>
+                        <h2>Descripción del Proyecto</h2>
+                    </header>
+                    <p>
+                        El sistema detecta cuando una persona ingresa a un espacio y verifica si la iluminación natural es insuficiente. En ese caso, enciende las luces automáticamente, optimizando el consumo energético. También las apaga cuando no hay nadie presente o cuando la luz ambiente es suficiente.
+                    </p>
+                </section>
 
-                            <section>
-                                <header>
-                                    <h3>3. Lógica de encendido automático</h3>
-                                </header>
-                                <p>AGREGAR INFORMACIÓN</p>
-                            </section>
+                <section>
+                    <header>
+                        <h2>Componentes Utilizados</h2>
+                    </header>
+                    <ul>
+                        <li>🔧 <strong>LabVIEW</strong> (entorno visual)</li>
+                        <li>💡 <strong>LDR</strong> - Sensor de luz</li>
+                        <li>👣 <strong>PIR</strong> - Sensor de movimiento</li>
+                        <li>🖥️ <strong>Arduino UNO</strong></li>
+                        <li>💻 Comunicación Serial (USB)</li>
+                    </ul>
+                </section>
 
-                            <section>
-                                <header>
-                                    <h3>4. Umbral de luz ambiente con LDR</h3>
-                                </header>
-                                <p>AGREGAR INFORMACIÓN</p>
-                            </section>
+                <section>
+                    <header>
+                        <h2>¿Cómo Funciona?</h2>
+                    </header>
+                    <p>
+                        El sistema compara el nivel de iluminación del entorno con un umbral configurable. Si la presencia es detectada por el sensor PIR y la luz natural es baja, se activan las luces. Cuando no hay presencia, o la iluminación ambiente es suficiente, las luces se apagan automáticamente.
+                    </p>
+                </section>
 
-                            <section>
-                                <header>
-                                    <h3>5. Control manual desde la interfaz</h3>
-                                </header>
-                                <p>AGREGAR INFORMACIÓN</p>
-                            </section>
+            </article>
 
-                        </article>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Footer -->
         <div id="footer">
             <div class="container">
                 <div class="row">
+                    <section class="col-12">
+                        <header>
+                            <h2>Créditos</h2>
+                        </header>
+                        <p>
+                            Desarrollado por<br>
+                            <strong>
+                                <a href="https://github.com/LuchoAguero44" target="_blank" rel="noopener noreferrer">Luis Agüero</a><br>
+                                <a href="https://github.com/AreliAyala" target="_blank" rel="noopener noreferrer">Arelí Ayala</a><br>
+                                <a href="https://github.com/FranDU98" target="_blank" rel="noopener noreferrer">Francisco Duarte</a><br>
+                                <a href="https://github.com/aldspals77" target="_blank" rel="noopener noreferrer">Aldo Palacios</a>
+                            </strong>
+                            <br><br>
+                            Estudiantes de Ingeniería Mecatrónica
+                        </p>
+                    </section>
+                </div>
+                <hr />
+                <div class="row">
                     <div class="col-12">
+                        <!-- Copyright -->
                         <div class="copyright">
                             <ul class="menu">
-                                <li>&copy; Iluminación Inteligente. Todos los derechos reservados.</li>
-                                <li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+                                <li>&copy; 2025 Iluminación Inteligente. Todos los derechos reservados.</li>
+                                <li>Diseño: <a href="http://html5up.net" target="_blank" rel="noopener noreferrer">HTML5 UP</a></li>
                             </ul>
                         </div>
                     </div>
