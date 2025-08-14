@@ -6,27 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-
     <style>
-        /* Fondo con imagen y opacidad */
-        .wrapper.style2 {
-            position: relative;
-            background: url('docs/images/pic05.jpg') no-repeat center center;
-            background-size: cover;
-            color: white;
-        }
-        /* Capa oscura semitransparente para mejorar contraste */
-        .wrapper.style2::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* 50% opacidad */
-            z-index: 0;
-        }
-        /* Asegurar que el contenido esté por encima */
-        .wrapper.style2 > * {
-            position: relative;
-            z-index: 1;
+
+        p {
+            color: inherit;
         }
     </style>
 </head>
@@ -50,13 +33,15 @@
 
             <!-- Nav -->
             <nav id="nav">
-              <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="codigos.html">Códigos</a></li>
-                <li><a href="informacion.html">Información</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-              </ul>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="codigos.html">Códigos</a></li>
+                    <li><a href="informacion.html">Información</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                </ul>
             </nav>
+
+        </div>
 
         <!-- Banner -->
         <section id="banner" style="display:flex; align-items:center; justify-content:center; gap:20px; padding: 3em 1em;">
@@ -66,8 +51,9 @@
             </header>
         </section>
 
-        <!-- Main con fondo -->
+        <!-- Main -->
         <div class="wrapper style2">
+
             <article id="main" class="container special">
 
                 <section>
@@ -102,43 +88,46 @@
                 </section>
 
             </article>
+
         </div>
 
-<!-- Footer -->
-<div id="footer">
-    <div class="container">
-        <div class="row">
-            <section class="col-12">
-                <header>
-                    <h2>Créditos</h2>
-                </header>
-                <p>
-                    Desarrollado por<br>
-                    <strong>
-                        <a href="https://github.com/LuchoAguero44" target="_blank" rel="noopener noreferrer">Luis Agüero</a><br>
-                        <a href="https://github.com/AreliAyala" target="_blank" rel="noopener noreferrer">Arelí Ayala</a><br>
-                        <a href="https://github.com/FranDU98" target="_blank" rel="noopener noreferrer">Francisco Duarte</a><br>
-                        <a href="https://github.com/aldspals77" target="_blank" rel="noopener noreferrer">Aldo Palacios</a>
-                    </strong>
-                    <br><br>
-                    Estudiantes de Ingeniería Mecatrónica
-                </p>
-            </section>
-        </div>
-        <hr />
-        <div class="row">
-            <div class="col-12">
-                <!-- Copyright -->
-                <div class="copyright">
-                    <ul class="menu">
-                        <li>&copy; 2025 Iluminación Inteligente. Todos los derechos reservados.</li>
-                        <li>Diseño: <a href="http://html5up.net" target="_blank" rel="noopener noreferrer">HTML5 UP</a></li>
-                    </ul>
+        <!-- Footer -->
+        <div id="footer">
+            <div class="container">
+                <div class="row">
+                    <section class="col-12">
+                        <header>
+                            <h2>Créditos</h2>
+                        </header>
+                        <p>
+                            Desarrollado por<br>
+                            <strong>
+                                <a href="https://github.com/LuchoAguero44" target="_blank" rel="noopener noreferrer">Luis Agüero</a><br>
+                                <a href="https://github.com/AreliAyala" target="_blank" rel="noopener noreferrer">Arelí Ayala</a><br>
+                                <a href="https://github.com/FranDU98" target="_blank" rel="noopener noreferrer">Francisco Duarte</a><br>
+                                <a href="https://github.com/aldspals77" target="_blank" rel="noopener noreferrer">Aldo Palacios</a>
+                            </strong>
+                            <br><br>
+                            Estudiantes de Ingeniería Mecatrónica
+                        </p>
+                    </section>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Copyright -->
+                        <div class="copyright">
+                            <ul class="menu">
+                                <li>&copy; 2025 Iluminación Inteligente. Todos los derechos reservados.</li>
+                                <li>Diseño: <a href="http://html5up.net" target="_blank" rel="noopener noreferrer">HTML5 UP</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-</div>
 
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
