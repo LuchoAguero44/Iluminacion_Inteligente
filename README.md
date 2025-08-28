@@ -24,7 +24,7 @@ El sistema detecta cuando una persona ingresa a un espacio y verifica si la ilum
 - 🔧 **LabVIEW** (entorno de programación visual)
 - 💡 **Sensor de luz (LDR)**
 - 👣 **Sensor de movimiento (PIR)**
-- 🖥️ Tarjeta controladora (Arduino u otra compatible)
+- 🖥️ **Raspberry pi3 model b** 
 - 💻 Comunicación serial entre hardware y software
 
 ## 🛠️ Funcionalidades
