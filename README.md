@@ -22,9 +22,9 @@ El sistema detecta cuando una persona ingresa a un espacio y verifica si la ilum
 ## ⚙️ Tecnologías y Herramientas
 
 - 🔧 **LabVIEW** (entorno de programación visual)
-- 💡 **Sensor de luz (LDR)**
-- 👣 **Sensor de movimiento (PIR)**
-- 🖥️ **Raspberry pi3 model b** 
+- 💡 **Sensor de luz (GY-2561 TSL2561)**
+- 👣 **Sensor de movimiento (PIR HC-SR501)**
+- 🖥️ **Raspberry Pi3 model b** 
 - 💻 Comunicación serial entre hardware y software
 
 ## 🛠️ Funcionalidades
