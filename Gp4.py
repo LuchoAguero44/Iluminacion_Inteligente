@@ -10,10 +10,10 @@ GPIO.setup(4, GPIO.IN)
 try:
     while True:
         estado = GPIO.input(4)  # Lee el pin (0 o 1)
-        if estado ==0
+        if estado ==0:
             print("No detectado")
         
-        elseif estado == 1
+        elif estado == 1:
             print("Detectado")
             
         time.sleep(0.5)
