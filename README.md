@@ -36,3 +36,5 @@ El sistema detecta cuando una persona ingresa a un espacio y verifica si la ilum
 - ✔️ Control automático y/o manual desde la PC.
 
 ## 🧩 Estructura del proyecto
+<img src="Diagramas/Funcionamiento Gral.drawio.png" alt="Diagrama" width="400"/>
+
