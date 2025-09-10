@@ -39,28 +39,25 @@
 							<p>Detalles técnicos, procesos y estructura del sistema de iluminación inteligente.</p>
 						</header>
 						
-						<section>
-							<header>
-								<h3>Justificación </h3>
-							</header>
-							<p>La iluminación representa uno de los mayores consumos energéticos en edificios corporativos, especialmente en áreas de uso intensivo como oficinas, salas de reuniones y pasillos. En GreenTech Tower, donde conviven múltiples empresas con horarios flexibles, resulta ineficiente mantener las luces encendidas de forma constante.
-El desarrollo de un sistema de iluminación inteligente permitirá:
-Reducir significativamente el consumo eléctrico al encender luces solo cuando se detecte presencia y en función de la luz natural disponible.
-
-
-Aumentar la vida útil de las luminarias, disminuyendo costos de mantenimiento.
-
-
-Garantizar confort y seguridad a los usuarios, al evitar espacios oscuros o sobre iluminados.
-
-
-Contribuir a la sostenibilidad del edificio, alineándose con las tendencias de Smart Buildings y Green Energy.
-
-
-En resumen, la implementación de este módulo no solo optimiza recursos, sino que también mejora la experiencia de los ocupantes y refuerza la imagen del edificio como referente tecnológico y ambiental.
-
-</p>
-						</section>
+					<section>
+    <header>
+        <h3>Justificación</h3>
+    </header>
+    <p>
+        La iluminación representa uno de los mayores consumos energéticos en edificios corporativos, especialmente en áreas de uso intensivo como oficinas, salas de reuniones y pasillos.  
+        En GreenTech Tower, donde conviven múltiples empresas con horarios flexibles, resulta ineficiente mantener las luces encendidas de forma constante.  
+    </p>
+    <p>
+        El desarrollo de un sistema de iluminación inteligente permitirá:  
+        • Reducir significativamente el consumo eléctrico al encender luces solo cuando se detecte presencia y en función de la luz natural disponible.  
+        • Aumentar la vida útil de las luminarias, disminuyendo costos de mantenimiento.  
+        • Garantizar confort y seguridad a los usuarios, al evitar espacios oscuros o sobre iluminados.  
+        • Contribuir a la sostenibilidad del edificio, alineándose con las tendencias de Smart Buildings y Green Energy.  
+    </p>
+    <p>
+        En resumen, la implementación de este módulo no solo optimiza recursos, sino que también mejora la experiencia de los ocupantes y refuerza la imagen del edificio como referente tecnológico y ambiental.
+    </p>
+</section>
 
 						<section>
 							<header>
@@ -70,20 +67,23 @@ En resumen, la implementación de este módulo no solo optimiza recursos, sino q
 </p>
 						</section>
 <section>
-							<header>
-								<h3>Objetivos Específicos</h3>
-							</header>
-							<p>1.Integrar sensores de luminosidad (LDR) y de movimiento (PIR) para detectar condiciones ambientales y de ocupación.
-								
-2.Desarrollar un algoritmo de control que combine la información de los sensores para decidir el encendido/apagado/regulación de luces.
-								
-3.Implementar una interfaz gráfica en Python que permita monitorear el sistema y realizar ajustes manuales.
-								
-4.Documentar y validar el funcionamiento mediante pruebas en un entorno de simulación o prototipo físico.
-							</p>
-						</section>
-						
-						<section>
+    <header>
+        <h3>Objetivos Específicos</h3>
+    </header>
+    <p>
+        1. Integrar sensores de luminosidad (LDR) y de movimiento (PIR) para detectar condiciones ambientales y de ocupación.
+    </p>
+    <p>
+        2. Desarrollar un algoritmo de control que combine la información de los sensores para decidir el encendido/apagado/regulación de luces.
+    </p>
+    <p>
+        3. Implementar una interfaz gráfica en Python que permita monitorear el sistema y realizar ajustes manuales.
+    </p>
+    <p>
+        4. Documentar y validar el funcionamiento mediante pruebas en un entorno de simulación o prototipo físico.
+    </p>
+</section>
+
 							<header>
 								<h3>Estado del Arte</h3>
 							</header>
@@ -105,61 +105,44 @@ En resumen, la implementación de este módulo no solo optimiza recursos, sino q
 						</section>
 
 						<section>
-							<header>
-								<h3>Arquitectura de Base de datos</h3>
-							</header>
-							<p>Stack Tecnológico
-Características del servidor del sistema:
-								
-Sistema Operativo Linux Debian 11
-								
-Apache HTTP Server 2.4.62
-								
-PHP 8.3.16
-
-								
-Hardware: 
-								
-CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 2 cores
-								
-Memoria RAM: 4 Gb
-								
-Espacio en Disco: 100 Gb.
-								
-IP: 192.168.176.106
-								
-
-Características del servidor de base de datos:
-								
-Sistema Operativo Linux Debian 11
-								
-Motor de Base de Datos: PostgreSQL 16.4
-								
-Base de datos en modo réplica.
-								
-
-Server Master:
-								
-CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 8 cores
-								
-Memoria RAM 8 Gb
-								
-Espacio en Disco: 200 Gb.
-								
-IP: 192.168.176.104
-								
-
-Server Slave:
-								
-CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 8 cores
-								
-Memoria RAM 8 Gb
-								
-Espacio en Disco: 200 Gb.
-								
-IP: 192.168.176.105
-							</p>
-						</section>
+    <header>
+        <h3>Arquitectura de Base de Datos</h3>
+    </header>
+    <p>
+        <strong>Stack Tecnológico</strong>
+    </p>
+    <p>
+        <strong>Características del servidor del sistema:</strong><br>
+        Sistema Operativo: Linux Debian 11<br>
+        Apache HTTP Server: 2.4.62<br>
+        PHP: 8.3.16<br>
+        Hardware:<br>
+        &nbsp;&nbsp;CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 2 cores<br>
+        &nbsp;&nbsp;Memoria RAM: 4 Gb<br>
+        &nbsp;&nbsp;Espacio en Disco: 100 Gb<br>
+        IP: 192.168.176.106
+    </p>
+    <p>
+        <strong>Características del servidor de base de datos:</strong><br>
+        Sistema Operativo: Linux Debian 11<br>
+        Motor de Base de Datos: PostgreSQL 16.4<br>
+        Base de datos en modo réplica
+    </p>
+    <p>
+        <strong>Server Master:</strong><br>
+        CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 8 cores<br>
+        Memoria RAM: 8 Gb<br>
+        Espacio en Disco: 200 Gb<br>
+        IP: 192.168.176.104
+    </p>
+    <p>
+        <strong>Server Slave:</strong><br>
+        CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 8 cores<br>
+        Memoria RAM: 8 Gb<br>
+        Espacio en Disco: 200 Gb<br>
+        IP: 192.168.176.105
+    </p>
+</section>
 
 						<section>
 							<header>
@@ -231,7 +214,7 @@ IP: 192.168.176.105
 							<div class="copyright">
 								<ul class="menu">
 									<li>&copy; Iluminación Inteligente. Todos los derechos reservados.</li>
-									<li>Diseño: <a href="http://html5up.net">HTML5 UP</a></li>
+								
 								</ul>
 							</div>
 						</div>
