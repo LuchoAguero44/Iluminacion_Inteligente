@@ -36,11 +36,11 @@
         <mxCell id="xy5n8G1pJrpaB1OT9_6e-15" value="Hay alguien en la sala?" style="rhombus;whiteSpace=wrap;html=1;rounded=0;strokeColor=light-dark(#000000,#000000);align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
           <mxGeometry x="320" y="310" width="80" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="xy5n8G1pJrpaB1OT9_6e-19" value="SI" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
-          <mxGeometry x="260" y="310" width="30" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="ASuYB_w1Ll3GmxtU4Yrd-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#000000);align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=classic;" edge="1" parent="1" source="xy5n8G1pJrpaB1OT9_6e-20" target="xy5n8G1pJrpaB1OT9_6e-15">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xy5n8G1pJrpaB1OT9_6e-19" value="SI" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
+          <mxGeometry x="260" y="310" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="xy5n8G1pJrpaB1OT9_6e-20" value="NO" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;" parent="1" vertex="1">
           <mxGeometry x="413.5" y="330" width="40" height="30" as="geometry" />
