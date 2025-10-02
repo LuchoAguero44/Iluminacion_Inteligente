@@ -38,3 +38,5 @@ El sistema detecta cuando una persona ingresa a un espacio y verifica si la ilum
 ## 🧩 Estructura del proyecto
 <img src="Diagramas/Funcionamiento Gral.drawio.png" alt="Diagrama" width="400"/>
 
+## Interfaz en Figma
+[Visualizalo aquí](https://www.figma.com/design/bdVxT7UNr5xeaE9i3ZEffd/Interfaz?node-id=0-1&t=zFIuBxvXCnwjDq3o-1)
