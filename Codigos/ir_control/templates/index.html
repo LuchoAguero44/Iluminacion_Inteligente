@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control LED RGB</title>
+  <style>
+    body {
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+
+    .remote {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      display: grid;
+      grid-template-columns: repeat(6, 70px);
+      gap: 10px;
+      justify-content: center;
+    }
+
+    button {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: none;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.1s, filter 0.2s;
+    }
+
+    button:active {
+      transform: scale(0.95);
+      filter: brightness(1.2);
+    }
+
+    .POWER { background: red; }
+    .OFF { background: black; }
+    .UP, .DOWN { background: gray; }
+    .RED { background: red; }
+    .GREEN { background: green; }
+    .BLUE { background: blue; }
+    .WHITE { background: white; color: black; border: 2px solid #ccc; }
+    .VIOLET { background: violet; color: black; }
+    .PURPLE { background: purple; }
+    .CYAN { background: cyan; color: black; }
+    .TURQUOISE { background: turquoise; color: black; }
+    .ORANGE { background: orange; color: black; }
+    .ORANGE2 { background: #ff7f00; color: black; }
+    .LIME { background: lime; color: black; }
+    .MUSTARD { background: #d4a017; color: black; }
+    .AQUAMARINE { background: aquamarine; color: black; }
+    .YELLOW { background: yellow; color: black; }
+    .NAVY { background: navy; }
+    .MAGENTA { background: magenta; }
+    .FLASH, .STROBE, .FADE, .SMOOTH {
+      background: #0096ff;
+      color: black;
+      border: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="remote">
+    {% for boton in botones %}
+      <form method="post" action="/send" style="margin:0;">
+        <input type="hidden" name="comando" value="{{ boton }}">
+        <button class="{{ boton }}">{{ boton }}</button>
+      </form>
+    {% endfor %}
+  </div>
+</body>
+</html>
+
