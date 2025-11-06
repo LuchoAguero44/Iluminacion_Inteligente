@@ -49,37 +49,298 @@
 
                             <section>
                                 <header>
-                                    <h3>1. Código de Raspberry Pi</h3>
+                                    <h3>1.app.py</h3>
                                 </header>
-                                <p>AGREGAR INFORMACIÓN</p>
+                                <p>  <strong><code>app.py</code></strong> es el <strong>núcleo de la aplicación web</strong> desarrollada con <strong>Flask</strong>. Gestiona autenticación, control de luces por infrarrojo (IR), modo automático, paneles diferenciados por rol (dueño/inquilino) y persistencia de datos en <strong>SQLite</strong>.<br><br>
+  
+  <strong>Funcionalidades principales</strong>:<br>
+  • <strong>Login/Logout</strong> con sesiones seguras y registro de intentos (IP + timestamp).<br>
+  • <strong>Roles diferenciados</strong>:<br>
+    &nbsp;&nbsp;→ <code>dueño</code>: crea inquilinos, asigna habitaciones, ve logs.<br>
+    &nbsp;&nbsp;→ <code>inquilino</code>: controla sus propias habitaciones.<br>
+  • <strong>Control de luces por habitación</strong>:<br>
+    &nbsp;&nbsp;→ Encendido/apagado (IR: <code>KEY_POWER</code> / <code>KEY_OFF</code>).<br>
+    &nbsp;&nbsp;→ Cambio de color (15 colores predefinidos vía rueda de colores).<br>
+    &nbsp;&nbsp;→ Ajuste de intensidad (+/- 10%).<br>
+    &nbsp;&nbsp;→ <strong>Modo automático</strong>: activa secuencia preprogramada (<code>modoauto.py</code>).<br>
+  • <strong>Envío de comandos IR</strong> mediante <code>irsend</code> (LIRC).<br>
+  • <strong>Base de datos SQLite</strong> (<code>database.db</code>) con:<br>
+    &nbsp;&nbsp;→ <code>usuarios</code> (id, usuario, contraseña, rol, nombre).<br>
+    &nbsp;&nbsp;→ <code>habitaciones</code> (id, usuario_id, nombre, estado, modo, color, intensidad).<br>
+    &nbsp;&nbsp;→ <code>logs_acceso</code> (intentos de login).<br><br>
+  
+  <strong>Rutas clave</strong>:<br>
+  <code>/</code> → GET: Redirige según sesión<br>
+  <code>/login</code> → GET/POST: Autenticación<br>
+  <code>/logout</code> → GET: Cierra sesión<br>
+  <code>/inquilino</code> → GET: Panel del inquilino<br>
+  <code>/dueño</code> → GET: Panel del dueño<br>
+  <code>/habitacion/&lt;id&gt;</code> → GET: Vista detallada de habitación<br>
+  <code>/cambiar_luz/&lt;id&gt;</code> → POST: Toggle ON/OFF<br>
+  <code>/cambiar_modo/&lt;id&gt;</code> → POST: Auto/Manual<br>
+  <code>/cambiar_color/&lt;id&gt;</code> → POST: Color vía rueda<br>
+  <code>/cambiar_intensidad/&lt;id&gt;</code> → POST: Subir/bajar brillo<br>
+  <code>/crear_inquilino</code> → GET/POST: Dueño crea inquilino + 4 habitaciones<br><br>
+  
+  <strong>Dependencias externas</strong>:<br>
+  • <code>irsend</code> (LIRC) → comandos IR.<br>
+  • <code>modoauto.py</code> → lógica del modo automático.<br>
+  • Plantillas Jinja2 (<code>templates/</code>) + CSS/JS estático.<br><br>
+  
+  <strong>Ejecución</strong>:<br>
+  <code>python app.py</code> — escucha en <code>0.0.0.0:5000</code> (debug activado).
+</p>
                             </section>
 
                             <section>
                                 <header>
-                                    <h3>2. Código de comunicación con LabVIEW</h3>
+                                    <h3>2.PRUEBA_MOV.PY</h3>
                                 </header>
-                                <p>AGREGAR INFORMACIÓN</p>
+                                <p>  <strong><code>prueba_mov.py</code></strong> es un script de prueba para detectar movimiento usando un sensor PIR conectado a una Raspberry Pi. 
+  Configura el pin GPIO 27 como entrada, espera 2 segundos para estabilizar el sensor y entra en un bucle infinito que verifica el estado del pin cada segundo.<br><br>
+  
+  <strong>Funcionamiento</strong>:<br>
+  • Si el sensor detecta movimiento → imprime "<code>Movimiento detectado!</code>"<br>
+  • Si no hay movimiento → imprime "<code>Sin movimiento</code>"<br><br>
+  
+  <strong>Salida controlada</strong>: Se detiene con <code>Ctrl+C</code>, limpiando los pines GPIO al finalizar.<br><br>
+  
+  <strong>Dependencias</strong>:<br>
+  • <code>RPi.GPIO</code> (biblioteca para control de pines en Raspberry Pi).<br>
+  • Sensor PIR conectado al pin <code>GPIO 27 (BCM)</code>.<br><br>
+  
+  <strong>Ejecución</strong>:<br>
+  <code>python3 prueba_mov.py</code> — ideal para verificar funcionamiento del sensor antes de integrarlo en proyectos domóticos.
+</p>
                             </section>
 
                             <section>
                                 <header>
-                                    <h3>3. Lógica de encendido automático</h3>
+                                    <h3>3. modoauto.py</h3>
                                 </header>
-                                <p>AGREGAR INFORMACIÓN</p>
+                                <p>  <strong><code>modoauto.py</code></strong> implementa el <strong>modo automático</strong> para el control inteligente de luces en una habitación. 
+  Usa un <strong>sensor PIR (movimiento)</strong> en GPIO 27 y un <strong>sensor de luz TSL2561 (I2C)</strong> para encender la luz automáticamente cuando:
+  <br>• Hay movimiento <strong>y</strong> la luz ambiental es < 20 lux.
+  <br>• Se apaga tras <strong>30 segundos sin movimiento</strong>.<br><br>
+  
+  <strong>Características clave</strong>:<br>
+  • <strong>Filtro anti-ruido en PIR</strong>: requiere 2 lecturas consecutivas para confirmar movimiento.<br>
+  • <strong>Registro en SQLite</strong>: guarda valores de luz y movimiento solo al <em>encender</em> (tabla <code>sensores</code>).<br>
+  • <strong>Consulta dinámica del modo</strong>: detiene el bucle si el usuario cambia a manual desde la web.<br>
+  • <strong>Hilo daemon</strong>: se activa con <code>activar_modo_automatico(id)</code> desde <code>app.py</code> sin bloquear Flask.<br>
+  • <strong>Importa funciones IR</strong> desde <code>ir_control.py</code> (<code>encender()</code>, <code>apagar()</code>).<br><br>
+  
+  <strong>Robustez</strong>:<br>
+  • Manejo de errores en GPIO, I2C y DB.<br>
+  • Valor por defecto: 10 lux si falla el sensor de luz.<br>
+  • Limpieza de GPIO en <code>finally</code>.<br><br>
+  
+  <strong>Prueba local</strong>: <code>python3 modoauto.py</code> ejecuta el modo para habitación ID 8.<br>
+  → Ideal para domótica: luz solo cuando es necesario.
+</p>
                             </section>
 
                             <section>
                                 <header>
-                                    <h3>4. Umbral de luz ambiente con LDR</h3>
+                                    <h3>4.models.py</h3>
                                 </header>
-                                <p>AGREGAR INFORMACIÓN</p>
+                                <p><p>
+  <strong><code>models.py</code></strong> define la <strong>estructura de la base de datos</strong> SQLite y funciones para inicializarla y crear usuarios con <strong>contraseñas hasheadas</strong> de forma segura.<br><br>
+  
+  <strong>Funciones principales</strong>:<br>
+  • <code>init_db()</code>: crea (si no existen) las tablas <code>usuarios</code> y <code>habitaciones</code> con restricciones de integridad.<br>
+  • <code>create_user()</code>: inserta un usuario con contraseña cifrada usando <code>werkzeug.security</code> (PBKDF2).<br><br>
+  
+  <strong>Tablas</strong>:<br>
+  • <code>usuarios</code>: <code>id</code>, <code>usuario</code> (único), <code>contraseña</code> (hasheada), <code>rol</code> (<code>dueño</code> o <code>inquilino</code>).<br>
+  • <code>habitaciones</code>: <code>id</code>, <code>usuario_id</code> (FK), <code>nombre</code>, <code>estado</code> (<code>on/off</code>), <code>intensidad</code> (0–100), <code>color</code>, <code>modo</code> (<code>manual/automatico</code>).<br><br>
+  
+  <strong>Restricciones</strong>: claves foráneas, valores válidos con <code>CHECK</code>, unicidad por <code>(usuario_id, nombre)</code>.<br>
+  → Garantiza consistencia y seguridad desde el modelo de datos.
+</p>
                             </section>
 
                             <section>
                                 <header>
-                                    <h3>5. Control manual desde la interfaz</h3>
+                                    <h3>5.ir_control.py</h3>
                                 </header>
-                                <p>AGREGAR INFORMACIÓN</p>
+                                <p> <strong><code>ir_control.py</code></strong> gestiona el <strong>envío de comandos infrarrojos (IR)</strong> mediante <code>irsend</code> (LIRC) de forma segura y no bloqueante.<br><br>
+  
+  <strong>Funciones principales</strong>:<br>
+  • <code>encender()</code>: enciende la luz y selecciona color blanco en una <strong>secuencia asíncrona</strong> usando un hilo daemon:<br>
+    &nbsp;&nbsp;→ <code>KEY_POWER</code> → espera 0.5s → <code>KEY_WHITE</code>.<br>
+  • <code>apagar()</code>: envía <code>KEY_OFF</code> inmediatamente.<br><br>
+  
+  <strong>Seguridad y robustez</strong>:<br>
+  • <code>_enviar_ir()</code> encapsula la ejecución con <code>timeout=3s</code>, captura errores y salida.<br>
+  • Manejo de <code>TimeoutExpired</code>, <code>CalledProcessError</code> y excepciones generales.<br>
+  • Logs claros en consola para depuración.<br><br>
+  
+  → Ideal para integración con Flask: <strong>no bloquea el servidor</strong> al encender.
+</p>
+                            </section>
+
+							  <section>
+                                <header>
+                                    <h3>6.crear_dueño.py</h3>
+                                </header>
+                                <p> <strong><code>crea_dueño.py</code></strong> es un script de <strong>inicialización única</strong> que crea el <strong>usuario administrador (dueño)</strong> en la base de datos SQLite.<br><br>
+  
+  <strong>Acción</strong>:<br>
+  • Inserta un usuario con:<br>
+    &nbsp;&nbsp;→ <code>usuario = 'Equipo'</code><br>
+    &nbsp;&nbsp;→ <code>contraseña = 'admin124'</code> (almacenada en texto plano – uso exclusivo en setup inicial)<br>
+    &nbsp;&nbsp;→ <code>rol = 'dueño'</code><br><br>
+  
+  <strong>Advertencia</strong>: No utiliza hash de contraseña (a diferencia de <code>models.py</code>). Solo para <strong>configuración inicial</strong> en entorno controlado.<br>
+  → Ejecutar una sola vez al desplegar el sistema.
+</p>
+                            </section>
+				<section>
+                                <header>
+                                    <h2>INTERFAZ</h2>
+                                </header>
+                                
+                            </section>
+							
+							<section>
+                                <header>
+                                    <h3>1.crear_inquilino.html</h3>
+                                </header>
+                                <p><strong><code>crear_inquilino.html</code></strong> es la plantilla Jinja2 para el <strong>formulario de creación de inquilinos</strong>, accesible solo por el usuario con rol <code>dueño</code>.<br><br>
+  
+  <strong>Elementos clave</strong>:<br>
+  • Formulario POST con campos <code>usuario</code> y <code>contraseña</code> (ambos requeridos).<br>
+  • Envía datos a la ruta <code>/crear_inquilino</code>.<br>
+  • Botón <strong>Volver</strong> al panel del dueño.<br>
+  • Muestra mensajes flash (<code>success</code>, <code>danger</code>) para feedback (ej. "Inquilino creado").<br><br>
+  
+  <strong>Estilos</strong>: usa <code>style.css</code> para diseño consistente con el resto de la aplicación.<br>
+  → Interfaz limpia, segura y centrada en usabilidad para el administrador.
+</p>
+                            </section>
+							
+							<section>
+                                <header>
+                                    <h3>2.habitacion.html</h3>
+                                </header>
+                                <p><strong><code>habitacion.html</code></strong> es la <strong>pantalla de control individual</strong> para una habitación, accesible por inquilinos (y dueños). Muestra estado actual y permite controlar luces, color, intensidad y modo.<br><br>
+  
+  <strong>Información mostrada</strong>:<br>
+  • Nombre y número de habitación.<br>
+  • Estado: <span style="color:green">ENCENDIDA</span> / <span style="color:red">APAGADA</span>.<br>
+  • Color actual y modo (<span style="color:green">AUTOMÁTICO</span> o <span style="color:red">MANUAL</span>).<br><br>
+  
+  <strong>Controles</strong>:<br>
+  • <strong>Encender/Apagar</strong>: botón toggle.<br>
+  • <strong>Modo</strong>: alterna entre Automático/Manual (color rojo/verde).<br>
+  • <strong>Rueda de colores</strong>: 15 botones circulares (CSS: <code>.pizza-wheel</code> + <code>.slice</code>) con colores predefinidos.<br>
+  • <strong>Intensidad</strong>: botones <code>+ Subir</code> / <code>- Bajar</code> (10% por paso).<br><br>
+  
+  <strong>Modo automático</strong>: todos los controles (excepto cambiar modo) se <code>disabled</code> visualmente (opacos, cursor bloqueado).<br>
+  → Usa estilos de <code>style.css</code> + CSS inline para layout flexible y responsive.<br>
+  → Enlace <strong>Volver al piso</strong> al panel del inquilino.
+</p>
+                            </section>
+
+							
+							<section>
+                                <header>
+                                    <h3>3.index_dueño.html</h3>
+                                </header>
+                                <p> <strong><code>index_dueño.html</code></strong> es el <strong>panel de administración</strong> exclusivo para el usuario con rol <code>dueño</code>. Permite gestionar inquilinos y acceder a sus pisos.<br><br>
+  
+  <strong>Acciones disponibles</strong>:<br>
+  • <strong>Crear Nuevo Inquilino</strong>: enlace directo al formulario.<br>
+  • <strong>Cerrar Sesión</strong>: logout seguro.<br>
+  • <strong>Lista de inquilinos</strong>: muestra cada usuario con botón <strong>Ver Piso</strong> que lleva a sus habitaciones.<br><br>
+  
+  → Interfaz minimalista, clara y centrada en la gestión administrativa. Usa estilos globales de <code>style.css</code> para consistencia visual.
+</p>
+                            </section>
+
+							
+							<section>
+                                <header>
+                                    <h3>4.index_inquilino.html</h3>
+                                </header>
+                                <p>  <strong><code>index_inquilino.html</code></strong> es el <strong>panel principal del inquilino</strong>, que muestra un resumen visual de todas sus habitaciones en una cuadrícula responsive.<br><br>
+  
+  <strong>Elementos clave</strong>:<br>
+  • <strong>Header</strong>: título “Mi piso”, botón <strong>Volver</strong> (al panel del dueño, si aplica) y <strong>Cerrar Sesión</strong>.<br>
+  • <strong>Cuadrícula de habitaciones</strong>: cada tarjeta muestra:<br>
+    &nbsp;&nbsp;→ Nombre<br>
+    &nbsp;&nbsp;→ Estado de luz (<code>Encendida</code> / <code>Apagada</code>)<br>
+    &nbsp;&nbsp;→ Color actual<br>
+    &nbsp;&nbsp;→ Intensidad (%)</code><br>
+    &nbsp;&nbsp;→ Modo (<code>Automático</code> / <code>Manual</code>)<br>
+    &nbsp;&nbsp;→ Botón <strong>Controlar</strong> → enlace a <code>habitacion.html</code><br><br>
+  
+  → Diseño limpio y funcional, optimizado para móviles. Usa <code>style.css</code> para estilos globales y estructura de tarjetas.
+</p>
+                            </section>
+
+							
+							<section>
+                                <header>
+                                    <h3>5.login.html</h3>
+                                </header>
+                                <p>  <strong><code>login.html</code></strong> es la <strong>pantalla de inicio de sesión</strong> del sistema, con diseño limpio y enfocado en la usabilidad.<br><br>
+  
+  <strong>Elementos principales</strong>:<br>
+  • <strong>Logo SVG</strong> en la parte superior (<code>img_inicio.svg</code>) para identidad visual.<br>
+  • Formulario centrado con campos:<br>
+    &nbsp;&nbsp;→ <code>usuario</code> (texto, autocompletado)<br>
+    &nbsp;&nbsp;→ <code>contraseña</code> (oculta, autocompletado)<br>
+  • Botón <strong>Entrar</strong> que envía POST a <code>/login</code>.<br>
+  • Muestra <strong>mensajes flash</strong> (éxito o error) debajo del formulario.<br><br>
+  
+  → Usa <code>style.css</code> para estilos globales y clases como <code>.login-page</code>, <code>.logo-container</code> y <code>.login-container</code> para un diseño moderno, responsive y profesional.
+</p>
+                            </section>
+
+							<section>
+                                <header>
+                                    <h3>6.piso_inquilino.html</h3>
+                                </header>
+                                <p> <strong><code>piso_inquilino.html</code></strong> es la <strong>vista detallada del piso</strong> para el <code>dueño</code>, mostrando todas las habitaciones de un inquilino específico en una cuadrícula clara y responsive.<br><br>
+  
+  <strong>Características</strong>:<br>
+  • <strong>Header</strong>: título “Piso del Inquilino”, botón <strong>Volver</strong> al panel del dueño y <strong>Cerrar Sesión</strong>.<br>
+  • <strong>Cuadrícula de habitaciones</strong>: cada tarjeta incluye:<br>
+    &nbsp;&nbsp;→ Nombre de la habitación<br>
+    &nbsp;&nbsp;→ Estado de luz (<code>Encendida</code> / <code>Apagada</code>)<br>
+    &nbsp;&nbsp;→ Color actual<br>
+    &nbsp;&nbsp;→ Intensidad en porcentaje<br>
+    &nbsp;&nbsp;→ Modo (<code>Automático</code> / <code>Manual</code>)<br>
+    &nbsp;&nbsp;→ Botón <strong>Controlar</strong> → enlace a <code>habitacion.html</code><br><br>
+  
+  → Permite al dueño inspeccionar y acceder al control de cualquier habitación del inquilino. Usa <code>style.css</code> para diseño consistente y profesional.
+</p>
+                            </section>
+							<section>
+                                <header>
+                                    <h2>ESTILO</h2>
+                                </header>
+                                
+                            </section>
+
+						
+							<section>
+                                <header>
+                                    <h3>1.style.css</h3>
+                                </header>
+                                <p> <strong><code>style.css</code></strong> es el <strong>hoja de estilos global</strong> del proyecto, que define una <strong>interfaz moderna, responsive y consistente</strong> con diseño tipo “glassmorphism” y animaciones sutiles.<br><br>
+  
+  <strong>Características clave</strong>:<br>
+  • <strong>Fondo dinámico</strong> con imagen fija y contenedores semitransparentes con <code>backdrop-filter: blur</code>.<br>
+  • <strong>Botones interactivos</strong>: gradiente azul, hover con escala y sombra, estados <code>[disabled]</code> atenuados (excepto <code>.slice</code>).<br>
+  • <strong>Rueda de colores (pizza wheel)</strong>: 15 rebanadas con <code>clip-path</code>, rotación precisa (24° por slice), hover con escala y brillo.<br>
+  • <strong>Estados deshabilitados</strong>: en modo automático, los controles se oscurecen (<code>opacity: 0.6</code> + <code>filter: brightness(0.6)</code>) sin desaparecer.<br>
+  • <strong>Grid responsive</strong> para tarjetas de habitaciones, formularios centrados y mensajes flash con colores semánticos.<br><br>
+  
+  → Optimizado para móviles y escritorio. Incluye animación de entrada (<code>fadeIn</code>) y transiciones suaves en todos los elementos interactivos.
+</p>
                             </section>
 
                         </article>
