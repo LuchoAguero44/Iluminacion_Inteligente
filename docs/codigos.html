@@ -49,7 +49,7 @@
 
                             <section>
                                 <header>
-                                    <h3>1.app.py</h3>
+                                    <h3 class="left">1.app.py</h3>
                                 </header>
                                 <p>  <strong><code>app.py</code></strong> es el <strong>núcleo de la aplicación web</strong> desarrollada con <strong>Flask</strong>. Gestiona autenticación, control de luces por infrarrojo (IR), modo automático, paneles diferenciados por rol (dueño/inquilino) y persistencia de datos en <strong>SQLite</strong>.<br><br>
   
@@ -94,7 +94,7 @@
 
                             <section>
                                 <header>
-                                    <h3>2.PRUEBA_MOV.PY</h3>
+                                    <h3 class="left">2.PRUEBA_MOV.PY</h3>
                                 </header>
                                 <p>  <strong><code>prueba_mov.py</code></strong> es un script de prueba para detectar movimiento usando un sensor PIR conectado a una Raspberry Pi. 
   Configura el pin GPIO 27 como entrada, espera 2 segundos para estabilizar el sensor y entra en un bucle infinito que verifica el estado del pin cada segundo.<br><br>
@@ -116,7 +116,7 @@
 
                             <section>
                                 <header>
-                                    <h3>3. modoauto.py</h3>
+                                    <h3 class="left">3. modoauto.py</h3>
                                 </header>
                                 <p>  <strong><code>modoauto.py</code></strong> implementa el <strong>modo automático</strong> para el control inteligente de luces en una habitación. 
   Usa un <strong>sensor PIR (movimiento)</strong> en GPIO 27 y un <strong>sensor de luz TSL2561 (I2C)</strong> para encender la luz automáticamente cuando:
@@ -142,7 +142,7 @@
 
                             <section>
                                 <header>
-                                    <h3>4.models.py</h3>
+                                    <h3 class="left">4.models.py</h3>
                                 </header>
                                 <p><p>
   <strong><code>models.py</code></strong> define la <strong>estructura de la base de datos</strong> SQLite y funciones para inicializarla y crear usuarios con <strong>contraseñas hasheadas</strong> de forma segura.<br><br>
@@ -162,7 +162,7 @@
 
                             <section>
                                 <header>
-                                    <h3>5.ir_control.py</h3>
+                                    <h3 class="left">5.ir_control.py</h3>
                                 </header>
                                 <p> <strong><code>ir_control.py</code></strong> gestiona el <strong>envío de comandos infrarrojos (IR)</strong> mediante <code>irsend</code> (LIRC) de forma segura y no bloqueante.<br><br>
   
@@ -182,7 +182,7 @@
 
 							  <section>
                                 <header>
-                                    <h3>6.crear_dueño.py</h3>
+                                    <h3 class="left">6.crear_dueño.py</h3>
                                 </header>
                                 <p> <strong><code>crea_dueño.py</code></strong> es un script de <strong>inicialización única</strong> que crea el <strong>usuario administrador (dueño)</strong> en la base de datos SQLite.<br><br>
   
@@ -205,7 +205,7 @@
 							
 							<section>
                                 <header>
-                                    <h3>1.crear_inquilino.html</h3>
+                                    <h3 class="left">1.crear_inquilino.html</h3>
                                 </header>
                                 <p><strong><code>crear_inquilino.html</code></strong> es la plantilla Jinja2 para el <strong>formulario de creación de inquilinos</strong>, accesible solo por el usuario con rol <code>dueño</code>.<br><br>
   
@@ -222,7 +222,7 @@
 							
 							<section>
                                 <header>
-                                    <h3>2.habitacion.html</h3>
+                                    <h3 class="left">2.habitacion.html</h3>
                                 </header>
                                 <p><strong><code>habitacion.html</code></strong> es la <strong>pantalla de control individual</strong> para una habitación, accesible por inquilinos (y dueños). Muestra estado actual y permite controlar luces, color, intensidad y modo.<br><br>
   
@@ -246,7 +246,7 @@
 							
 							<section>
                                 <header>
-                                    <h3>3.index_dueño.html</h3>
+                                    <h3 class="left">3.index_dueño.html</h3>
                                 </header>
                                 <p> <strong><code>index_dueño.html</code></strong> es el <strong>panel de administración</strong> exclusivo para el usuario con rol <code>dueño</code>. Permite gestionar inquilinos y acceder a sus pisos.<br><br>
   
@@ -262,7 +262,7 @@
 							
 							<section>
                                 <header>
-                                    <h3>4.index_inquilino.html</h3>
+                                    <h3 class="left">4.index_inquilino.html</h3>
                                 </header>
                                 <p>  <strong><code>index_inquilino.html</code></strong> es el <strong>panel principal del inquilino</strong>, que muestra un resumen visual de todas sus habitaciones en una cuadrícula responsive.<br><br>
   
@@ -283,7 +283,7 @@
 							
 							<section>
                                 <header>
-                                    <h3>5.login.html</h3>
+                                    <h3 class="left">5.login.html</h3>
                                 </header>
                                 <p>  <strong><code>login.html</code></strong> es la <strong>pantalla de inicio de sesión</strong> del sistema, con diseño limpio y enfocado en la usabilidad.<br><br>
   
@@ -301,7 +301,7 @@
 
 							<section>
                                 <header>
-                                    <h3>6.piso_inquilino.html</h3>
+                                    <h3 class="left">6.piso_inquilino.html</h3>
                                 </header>
                                 <p> <strong><code>piso_inquilino.html</code></strong> es la <strong>vista detallada del piso</strong> para el <code>dueño</code>, mostrando todas las habitaciones de un inquilino específico en una cuadrícula clara y responsive.<br><br>
   
@@ -328,7 +328,7 @@
 						
 							<section>
                                 <header>
-                                    <h3>1.style.css</h3>
+                                    <h3 class="left">1.style.css</h3>
                                 </header>
                                 <p> <strong><code>style.css</code></strong> es el <strong>hoja de estilos global</strong> del proyecto, que define una <strong>interfaz moderna, responsive y consistente</strong> con diseño tipo “glassmorphism” y animaciones sutiles.<br><br>
   
