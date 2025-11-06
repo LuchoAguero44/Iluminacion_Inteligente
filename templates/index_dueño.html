@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Dueño</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido, Dueño</h1>
+    
+    <a class="btn" href="{{ url_for('crear_inquilino') }}">Crear Nuevo Inquilino</a>
+    <a class="btn" href="{{ url_for('logout') }}">Cerrar Sesión</a>
+
+    <h2>Lista de Inquilinos</h2>
+    <ul class="list">
+      {% for inquilino in inquilinos %}
+        <li>
+          {{ inquilino.usuario }}
+          <a class="btn-small" href="{{ url_for('piso_inquilino', inquilino_id=inquilino.id) }}">Ver Piso</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,401 @@
+/* ---------- Reset y fuente ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: url('/static/img/fondo.png') center/cover no-repeat fixed;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* ---------- Contenedores ---------- */
+.container, .login-container, .dashboard-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 6px 30px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 800px;
+  width: 90%;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Animación sutil */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ajuste para el body de la habitación individual */
+body > h1, body > p, body > form, body > a, body > h3, .pizza-wheel {
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+/* ---------- Títulos ---------- */
+h1, h2, h3 {
+  color: #0277bd;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2rem;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+/* ---------- Botones Globales (Encender/Apagar, Modo, etc.) ---------- */
+button, .btn {
+  background: linear-gradient(135deg, #4FC3F7, #81D4FA);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover, .btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(79,195,247,0.3);
+}
+
+button:active, .btn:active {
+  transform: scale(0.95);
+}
+
+/* Ajuste para los botones de Encender/Apagar y Modo */
+body > form:nth-of-type(1) button {
+    flex: 1 1 45%; 
+    margin: 5px;
+    min-width: unset;
+}
+body > form:nth-of-type(1) {
+    display: flex;
+    max-width: 400px; 
+}
+
+/* Ajuste para botones de Intensidad (+/-) */
+body > form:nth-of-type(2) {
+    display: flex;
+    max-width: 200px;
+    justify-content: space-between;
+}
+body > form:nth-of-type(2) button {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    flex: 1;
+    margin: 0 5px;
+}
+/* ESTILO GENERAL DE BOTÓN (EXCLUYE EXPLICITAMENTE LA CLASE .slice) */
+button[disabled]:not(.slice) {
+    /* Estos estilos solo aplican a botones deshabilitados que NO tengan la clase .slice */
+    
+    /* Efecto de atenuación general */
+    filter: brightness(30%) grayscale(10%); 
+    
+    /* Fondo gris que SÍ queremos para Encender/Apagar */
+    background-color: #d6d6d6 !important; 
+    
+    /* Texto gris */
+    color: #444444 !important; 
+    
+    /* Mantenemos la opacidad sutil para Encender/Apagar */
+    opacity: 0.8; 
+    
+    /* Desactivar efectos */
+    box-shadow: none !important;
+    transform: none !important;
+    border: 1px solid #d6d6d6 !important;
+    cursor: not-allowed;
+}
+
+
+
+
+/* ---------- Formularios ---------- */
+input[type="text"], input[type="password"], input[type="number"], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  background: #f9f9f9;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #4FC3F7;
+  outline: none;
+  box-shadow: 0 0 5px rgba(79,195,247,0.4);
+}
+
+/* ---------- Mensajes Flash ---------- */
+.message, .alert {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.alert-success { background: #c6f6d5; color: #22543d; }
+.alert-danger { background: #fed7d7; color: #742a2a; }
+.alert-info { background: #bee3f8; color: #2a4365; }
+
+/* ---------- Grid de Habitaciones (2x2) ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* ---------- Tarjetas de Habitaciones ---------- */
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.25s, box-shadow 0.25s;
+  border-top: 5px solid #4FC3F7;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(79,195,247,0.25);
+}
+
+.card h3 {
+  color: #0288d1;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.card button {
+  margin-top: 10px;
+}
+
+/* ---------- Botón AUTO ---------- */
+.auto-btn {
+  width: 160px;
+  height: 50px;
+  background: linear-gradient(135deg, #4FC3F7, #81D4FA);
+  color: white;
+  font-size: 18px;
+  border-radius: 12px;
+  border: none;
+  margin: 10px 0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.25s ease;
+}
+
+.auto-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(79,195,247,0.3);
+}
+
+/* ---------- Controles Remotos ---------- */
+.remote {
+  background: #fff;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  display: grid;
+  grid-template-columns: repeat(6, 70px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  border-top: 5px solid #4FC3F7;
+}
+
+.remote button {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.2s;
+}
+
+.remote button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* ---------- Estado Automático ---------- */
+.estado-auto {
+  background: #e3f2fd;
+  border-left: 6px solid #4FC3F7;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #0277bd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* ---------- Colores de Botones Remotos ---------- */
+.POWER { background: red; color: white; }
+.OFF { background: black; color: white; }
+.UP, .DOWN { background: gray; color: white; }
+.RED { background: red; }
+.GREEN { background: green; }
+.BLUE { background: blue; }
+.WHITE { background: white; color: black; border: 2px solid #ccc; }
+.VIOLET { background: violet; color: black; }
+.PURPLE { background: purple; color: white; }
+.CYAN { background: cyan; color: black; }
+.TURQUOISE { background: turquoise; color: black; }
+.ORANGE { background: orange; color: black; }
+.LIME { background: lime; color: black; }
+.MUSTARD { background: ; color: black; }
+.AQUAMARINE { background: aquamarine; color: black; }
+.YELLOW { background: yellow; color: black; }
+.NAVY { background: navy; color: white; }
+.MAGENTA { background: magenta; color: white; }
+.FLASH, .STROBE, .FADE, .SMOOTH {
+  background: #29b6f6;
+  color: white;
+  font-weight: bold;
+}
+
+/* ---------------------------------------------------------------------- */
+/* ������ RUEDA DE COLORES (PIZZA WHEEL) - CÓDIGO FINAL Y ESTABLE ������ */
+/* ---------------------------------------------------------------------- */
+.pizza-wheel {
+  width: 250px;
+  height: 250px; 
+  position: relative;
+  margin: 30px auto; 
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden; 
+  transform-style: preserve-3d; 
+}
+
+.pizza-wheel form {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slice {
+  position: absolute;
+  width: 50%; 
+  height: 50%; 
+  
+  top: 50%;
+  left: 50%;
+  
+  transform-origin: 0% 0%;
+  
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+  
+  /* CORRECCIÓN 1: Valor matemáticamente correcto para 15 rebanadas */
+  clip-path: polygon(0% 0%, 41% 92%, 0% 100%); 
+  
+  z-index: 1; 
+  backface-visibility: hidden; 
+}
+
+/*.slice[disabled] { 
+ Sobreescribe los valores específicos que quieres mantener: 
+    opacity: 0.5; /* El efecto de bloqueo sutil que deseas 
+    
+Aseguramos que no haya ningún filtro de gris/brillo si el elemento es un botón 
+    filter: none !important;
+    
+ Mantenemos el fondo transparente/dinámico de la 'pizza' 
+    background-color: transparent !important;
+    
+Otras propiedades de interacción 
+    color: initial; 
+    cursor: not-allowed;
+    pointer-events: none;
+}
+*/
+
+.slice[disabled] {
+    opacity: 0.6;                    /* Más oscuro, pero visible */
+    filter: brightness(0.6) grayscale(0.4); /* Oscurece y desatura */
+    cursor: not-allowed;
+    pointer-events: none;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* Distribución angular de 15 rebanadas (360 / 15 = 24 grados por rebanada) */
+
+.slice:nth-child(1) { transform: rotate(0deg) translateZ(0); }
+.slice:nth-child(2) { transform: rotate(24deg) translateZ(0); }
+.slice:nth-child(3) { transform: rotate(48deg) translateZ(0); }
+.slice:nth-child(4) { transform: rotate(72deg) translateZ(0); }
+.slice:nth-child(5) { transform: rotate(96deg) translateZ(0); }
+.slice:nth-child(6) { transform: rotate(120deg) translateZ(0); }
+.slice:nth-child(7) { transform: rotate(144deg) translateZ(0); }
+.slice:nth-child(8) { transform: rotate(168deg) translateZ(0); }
+.slice:nth-child(9) { transform: rotate(192deg) translateZ(0); }
+.slice:nth-child(10) { transform: rotate(216deg) translateZ(0); }
+.slice:nth-child(11) { transform: rotate(240deg) translateZ(0); }
+.slice:nth-child(12) { transform: rotate(264deg) translateZ(0); }
+.slice:nth-child(13) { transform: rotate(288deg) translateZ(0); }
+.slice:nth-child(14) { transform: rotate(312deg) translateZ(0); }
+.slice:nth-child(15) { transform: rotate(336deg) translateZ(0); }
+
+/* Hover: Aseguramos que la rebanada esté al frente y se escale */
+.slice:hover {
+    z-index: 2; 
+    filter: brightness(1.1); 
+}
+
+/* Hover: Aplicamos la rotación base, el scale, y mantenemos translateZ(0) */
+.slice:nth-child(1):hover { transform: rotate(0deg) scale(1.1) translateZ(0); }
+.slice:nth-child(2):hover { transform: rotate(24deg) scale(1.1) translateZ(0); }
+.slice:nth-child(3):hover { transform: rotate(48deg) scale(1.1) translateZ(0); }
+.slice:nth-child(4):hover { transform: rotate(72deg) scale(1.1) translateZ(0); }
+.slice:nth-child(5):hover { transform: rotate(96deg) scale(1.1) translateZ(0); }
+.slice:nth-child(6):hover { transform: rotate(120deg) scale(1.1) translateZ(0); }
+.slice:nth-child(7):hover { transform: rotate(144deg) scale(1.1) translateZ(0); }
+.slice:nth-child(8):hover { transform: rotate(168deg) scale(1.1) translateZ(0); }
+.slice:nth-child(9):hover { transform: rotate(192deg) scale(1.1) translateZ(0); }
+.slice:nth-child(10):hover { transform: rotate(216deg) scale(1.1) translateZ(0); }
+.slice:nth-child(11):hover { transform: rotate(240deg) scale(1.1) translateZ(0); }
+.slice:nth-child(12):hover { transform: rotate(264deg) scale(1.1) translateZ(0); }
+.slice:nth-child(13):hover { transform: rotate(288deg) scale(1.1) translateZ(0); }
+.slice:nth-child(14):hover { transform: rotate(312deg) scale(1.1) translateZ(0); }
+.slice:nth-child(15):hover { transform: rotate(336deg) scale(1.1) translateZ(0); }

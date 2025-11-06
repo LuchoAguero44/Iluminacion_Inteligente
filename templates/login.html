@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de sesión</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="login-page">
+  <!-- IMAGEN SVG EN LA PARTE SUPERIOR -->
+  <div class="logo-container">
+    <img src="{{ url_for('static', filename='img/img_inicio.svg') }}" 
+         alt="Logo del sistema" 
+         class="logo-inicio">
+  </div>
+
+  <!-- FORMULARIO DE LOGIN -->
+  <div class="login-container">
+    <h1>Iniciar sesión</h1>
+    <form action="/login" method="POST">
+      <input type="text" name="usuario" placeholder="Usuario" required autocomplete="username">
+      <input type="password" name="contraseña" placeholder="Contraseña" required autocomplete="current-password">
+      <button type="submit">Entrar</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="message">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habitación {{ numero }}</title>
+    <!-- Tu archivo CSS principal que ya incluye los estilos de .pizza-wheel y .slice -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Estilos in-line: SOLO para control de layout específico de esta página, NO de la rueda. */
+        body { font-family: "Segoe UI", sans-serif; padding: 20px; background-color: #f4f4f9; color: #333; }
+        
+        /* Controles de Grupo (flex) */
+        .controls-group { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; max-width: 400px; margin: 10px auto 20px auto; }
+        
+        /* Info Card */
+        .info-card { 
+            background: white; 
+            padding: 15px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+            margin-bottom: 20px; 
+            max-width: 600px;
+            margin: 10px auto 20px auto;
+        }
+        
+        /* Títulos */
+        h1, h3 { color: #007bff; margin-bottom: 10px; text-align: center; }
+        
+        /* Botón de volver */
+        a { color: #007bff; text-decoration: none; display: block; margin-top: 20px; text-align: center; }
+
+        /* Ajuste para que los botones de Intesidad (+/-) usen el controls-group correctamente */
+        .intensity-form {
+             display: flex;
+             max-width: 200px;
+             justify-content: space-between;
+             margin: 0 auto;
+        }
+
+        /* Se eliminan todos los estilos de .pizza-wheel y .slice para usar los de style.css */
+    </style>
+</head>
+<body>
+
+    <h1>Control de la Habitación {{ numero }} ({{ habitacion.nombre }})</h1>
+    
+    <div class="info-card">
+        <p><strong>Estado de las luces:</strong> <span style="font-weight: bold;color: {% if habitacion.estado == 'on' %}green{% else %}red{% endif %};">{% if habitacion.estado == 'on' %} ENCENDIDA{% else %} APAGADA{% endif %}</span></p>
+        <p><strong>Color:</strong> {{ habitacion.color }}</p>
+        <p><strong>Modo:</strong> <span style="font-weight: bold; color: {% if habitacion.modo == 'automatico' %}green{% else %}red{% endif %};">{{ habitacion.modo | upper }}</span></p>
+        
+    </div>
+
+    <!-- GRUPO DE CONTROL PRINCIPAL: Encender/Apagar y Modo -->
+    <h3 class="mt-4">Control Principal</h3>
+    <div class="controls-group">
+        
+        <!-- 1. FORMULARIO: Encender/Apagar (Apunta a cambiar_luz) -->
+        <form action="{{ url_for('cambiar_luz', habitacion_id=numero) }}" method="POST">
+            <button type="submit" name="accion" value="toggle" 
+                    class="control-button"
+                    {% if habitacion.modo == 'automatico' %}disabled title="Deshabilitado en modo automático"{% endif %}>
+                Encender / Apagar
+            </button>
+        </form>
+
+        <!-- 2. FORMULARIO: Alternar Modo (Apunta a cambiar_modo) -->
+        <form action="{{ url_for('cambiar_modo', habitacion_id=numero) }}" method="POST">
+            <button type="submit" name="accion" value="auto_toggle" class="btn"
+                style="background-color: {% if habitacion.modo == 'automatico' %}#dc3545{% else %}#28a745{% endif %};">
+                {% if habitacion.modo == 'automatico' %}
+                    Cambiar a Manual
+                {% else %}
+                    Activar Automático
+                {% endif %}
+            </button>
+        </form>
+    </div>
+
+    <h3 class="mt-4">Colores</h3> 
+    <div class="pizza-wheel">
+        <!-- El diseño circular será manejado por tu style.css -->
+        <form action="{{ url_for('cambiar_color', habitacion_id=numero) }}" method="POST">
+            <!-- NOTA: Tenías 14 colores, pero tu CSS asume 15 slices. He añadido un color 'gold' para que coincida con tus 15 reglas CSS. -->
+            {% for color in ["PURPLE","MAGENTA","VIOLET","RED","YELLOW","GOLD","ORANGE","GREEN","LIME","WHITE","CYAN","AQUAMARINE","TURQUOISE","BLUE","NAVY"] %}
+                <button name="color" value="{{ color }}" class="slice {{ color | upper }}" style="background: {{ color }};"
+                    {% if habitacion.modo == 'automatico' %}disabled title="Deshabilitado en modo automático"{% endif %}>
+                    &nbsp; 
+                </button>
+            {% endfor %}
+        </form>
+    </div>
+    
+    <h3 class="mt-4">Intensidad</h3>
+    <!-- Usamos 'intensity-form' para evitar conflictos con selectores generales de tu CSS. -->
+    <form action="{{ url_for('cambiar_intensidad', habitacion_id=numero) }}" method="POST" class="intensity-form">
+        <button name="accion" value="bajar" 
+                {% if habitacion.modo == 'automatico' %}disabled title="Deshabilitado en modo automático"{% endif %}>- Bajar</button>
+        <button name="accion" value="subir" 
+                {% if habitacion.modo == 'automatico' %}disabled title="Deshabilitado en modo automático"{% endif %}>+ Subir</button>
+    </form>
+    
+    <a href="{{ url_for('panel_inquilino') }}">← Volver al piso</a>
+</body>
+</html>
