@@ -220,11 +220,149 @@ En conclusión, si bien existen sistemas avanzados de iluminación inteligente, 
 </section>
 
 						<section>
-							<header>
-								<h3>Descripción de Componentes</h3>
-							</header>
-							<p>AGREGAR INFORMACIÓN</p>
-						</section>
+
+    <h2>Descripción de Componentes</h2>
+
+    <table border="1" cellspacing="0" cellpadding="8">
+        <thead>
+            <tr>
+                <th>Componente</th>
+                <th>Función principal</th>
+                <th>Voltaje de operación</th>
+                <th>Interfaz / Tipo de señal</th>
+                <th>Consumo / Corriente típica</th>
+                <th>Características destacadas</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Raspberry Pi 3 Model B</td>
+                <td>Microcomputadora para control y procesamiento de datos</td>
+                <td>5 V DC (2.5 A mín.)</td>
+                <td>GPIO, USB, HDMI, Wi-Fi, Bluetooth, Ethernet</td>
+                <td>700 – 1000 mA</td>
+                <td>CPU Quad-Core 1.2 GHz, 1 GB RAM, Wi-Fi/BT integrados, 40 pines GPIO</td>
+            </tr>
+
+            <tr>
+                <td>Sensor PIR HC-SR501</td>
+                <td>Detección de movimiento por radiación infrarroja</td>
+                <td>4.5 – 20 V DC</td>
+                <td>Salida digital (HIGH/LOW)</td>
+                <td>&lt; 60 µA en reposo</td>
+                <td>Alcance 3–7 m, ángulo 110°, retardo ajustable</td>
+            </tr>
+
+            <tr>
+                <td>Sensor de Luz GY-2561 (TSL2561)</td>
+                <td>Medición de intensidad lumínica (lux)</td>
+                <td>3.3 – 5 V DC</td>
+                <td>I²C (0x29–0x49)</td>
+                <td>0.6 mA activa / 15 µA espera</td>
+                <td>Mide visible + IR, 0.1–40 000 lux, alta precisión</td>
+            </tr>
+
+            <tr>
+                <td>Fuente de Alimentación 5 V</td>
+                <td>Suministro de energía a los módulos</td>
+                <td>5 V DC (2.5–3 A)</td>
+                <td>—</td>
+                <td>—</td>
+                <td>Protecciones contra sobrecarga y cortocircuito</td>
+            </tr>
+
+            <tr>
+                <td>Tira de Luces LED RGB (5 V)</td>
+                <td>Iluminación o señalización visual</td>
+                <td>5 V DC</td>
+                <td>Digital o analógica</td>
+                <td>~60 mA por LED</td>
+                <td>RGB, direccionables o fijas, flexible</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+
+    <h3>1. Raspberry Pi 3 Model B</h3>
+    <p><strong>Descripción general:</strong>  
+    La Raspberry Pi 3 Model B es una computadora de placa única diseñada para ejecutar sistemas Linux y realizar tareas de automatización, control e IoT.</p>
+
+    <p><strong>Características técnicas:</strong></p>
+    <ul>
+        <li>Procesador: Broadcom BCM2837, Quad-Core ARM Cortex-A53 a 1.2 GHz</li>
+        <li>Memoria RAM: 1 GB LPDDR2</li>
+        <li>Conectividad: Wi-Fi 802.11n, Bluetooth 4.1, Ethernet 10/100</li>
+        <li>Almacenamiento: microSD</li>
+        <li>Puertos: 4× USB 2.0, HDMI, Jack AV, 40 pines GPIO</li>
+        <li>Alimentación: 5 V DC, 2.5 A mín.</li>
+    </ul>
+
+    <p><strong>Aplicaciones comunes:</strong> Automatización del hogar, servidores ligeros, estaciones meteorológicas, robótica educativa y sistemas IoT.</p>
+
+
+    <h3>2. Sensor PIR HC-SR501</h3>
+    <p><strong>Descripción general:</strong>  
+    Sensor PIR que detecta movimiento mediante cambios en radiación infrarroja.</p>
+
+    <p><strong>Características técnicas:</strong></p>
+    <ul>
+        <li>Voltaje: 4.5 – 20 V DC</li>
+        <li>Distancia: 3 – 7 m</li>
+        <li>Ángulo: 110°</li>
+        <li>Retardo: 3 – 300 s</li>
+        <li>Salida digital HIGH/LOW</li>
+        <li>Consumo: &lt; 60 µA</li>
+    </ul>
+
+    <p><strong>Aplicaciones comunes:</strong> Alarmas, luces automáticas, sistemas de presencia.</p>
+
+
+    <h3>3. Sensor de Luz GY-2561 (TSL2561)</h3>
+    <p><strong>Descripción general:</strong>  
+    Sensor digital de luminosidad que mide luz visible e infrarroja mediante I²C.</p>
+
+    <p><strong>Características técnicas:</strong></p>
+    <ul>
+        <li>Voltaje: 3.3 – 5 V DC</li>
+        <li>Interfaz: I²C (0x29, 0x39, 0x49)</li>
+        <li>Rango: 0.1 – 40 000 lux</li>
+        <li>Consumo: 0.6 mA activo / 15 µA espera</li>
+        <li>Resolución: 16 bits</li>
+    </ul>
+
+    <p><strong>Aplicaciones comunes:</strong> Iluminación automática, estaciones meteorológicas y dispositivos IoT.</p>
+
+
+    <h3>4. Fuente de Alimentación 5 V</h3>
+    <p><strong>Descripción general:</strong>  
+    Provee la energía estable y continua para la Raspberry Pi y sus periféricos.</p>
+
+    <p><strong>Características típicas:</strong></p>
+    <ul>
+        <li>Salida: 5 V DC, 2.5–3 A</li>
+        <li>Entrada: 100–240 V AC</li>
+        <li>Protecciones contra sobrecarga y cortocircuito</li>
+    </ul>
+
+
+    <h3>5. Tira de Luces LED RGB (5 V)</h3>
+    <p><strong>Descripción general:</strong>  
+    Tira flexible con LEDs RGB, puede ser direccionable o fija.</p>
+
+    <p><strong>Características técnicas:</strong></p>
+    <ul>
+        <li>Voltaje: 5 V DC</li>
+        <li>Consumo: 60 mA por LED</li>
+        <li>Control: digital (direccionable) o analógico</li>
+        <li>Colores: RGB </li>
+    </ul>
+
+    <p><strong>Aplicaciones comunes:</strong> Decoración, señalización, domótica, iluminación ambiental.</p>
+
+</section>
+
 
 						
 						<section>
