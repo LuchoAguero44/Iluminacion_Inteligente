@@ -174,50 +174,78 @@ En conclusión, si bien existen sistemas avanzados de iluminación inteligente, 
 	<img src="images/Flujograma.svg" alt="Flujograma del proyecto" style="max-width:100%; height:auto;">
 
 	<p>A Diagrama de Flujo:</p>
-	<img src="images/Flujograma2.svg" alt="Diagrama de flujo" style="max-width:100%; height:auto;">
+	<img src="images/diafluj.png" alt="Diagrama de flujo" style="max-width:100%; height:auto;">
 
 </section>
 
 
-						<section>
+	<section>
     <header>
         <h3>Arquitectura de Base de Datos</h3>
     </header>
+
     <p>
-        <strong>Stack Tecnológico</strong>
+        La base de datos está diseñada bajo un modelo relacional que organiza y conecta la información 
+        de usuarios, habitaciones, sensores y registros de acceso. Su estructura permite una administración 
+        eficiente del sistema, garantiza seguridad, almacena datos de los sensores y gestiona el control de 
+        iluminación en cada ambiente.
     </p>
-    <p>
-        <strong>Características del servidor del sistema:</strong><br>
-        Sistema Operativo: Linux Debian 11<br>
-        Apache HTTP Server: 2.4.62<br>
-        PHP: 8.3.16<br>
-        Hardware:<br>
-        &nbsp;&nbsp;CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 2 cores<br>
-        &nbsp;&nbsp;Memoria RAM: 4 Gb<br>
-        &nbsp;&nbsp;Espacio en Disco: 100 Gb<br>
-        IP: 192.168.176.106
+
+    <h4>Tablas Principales</h4>
+    <p>La arquitectura está compuesta por cuatro tablas principales: <strong>usuarios</strong>, 
+       <strong>habitaciones</strong>, <strong>sensores</strong> y <strong>logs_acceso</strong>.  
+       Estas tablas se relacionan mediante claves primarias (PK) y claves foráneas (FK), asegurando 
+       integridad referencial y permitiendo operaciones como monitoreo, configuración y control de iluminación.
     </p>
-    <p>
-        <strong>Características del servidor de base de datos:</strong><br>
-        Sistema Operativo: Linux Debian 11<br>
-        Motor de Base de Datos: PostgreSQL 16.4<br>
-        Base de datos en modo réplica
-    </p>
-    <p>
-        <strong>Server Master:</strong><br>
-        CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 8 cores<br>
-        Memoria RAM: 8 Gb<br>
-        Espacio en Disco: 200 Gb<br>
-        IP: 192.168.176.104
-    </p>
-    <p>
-        <strong>Server Slave:</strong><br>
-        CPU: Intel(R) Xeon(R) Gold 5320 CPU @ 2.20GHz - 8 cores<br>
-        Memoria RAM: 8 Gb<br>
-        Espacio en Disco: 200 Gb<br>
-        IP: 192.168.176.105
-    </p>
+
+    <h5>Tabla: usuarios</h5>
+    <ul>
+        <li><strong>Campos principales:</strong> id (PK), usuario, contraseña, rol</li>
+        <li><strong>Función:</strong> controla autenticación, permisos y registro de actividad</li>
+    </ul>
+
+    <h5>Tabla: habitaciones</h5>
+    <ul>
+        <li><strong>Campos principales:</strong> id (PK), usuario_id, nombre, estado, intensidad, color, modo</li>
+        <li><strong>Función:</strong> registra la configuración actual de cada habitación y vincula cada espacio con el responsable (usuario)</li>
+    </ul>
+
+    <h5>Tabla: sensores</h5>
+    <ul>
+        <li><strong>Campos principales:</strong> id (PK), habitacion_id, valor, tipo, tiempo</li>
+        <li><strong>Función:</strong> almacenar mediciones en tiempo real usadas por el sistema para controlar la iluminación</li>
+    </ul>
+
+    <h5>Tabla: logs_acceso</h5>
+    <ul>
+        <li><strong>Campos principales:</strong> id (PK), usuario, exito, tiempo, ip</li>
+        <li><strong>Función:</strong> auditoría y seguimiento de seguridad</li>
+    </ul>
+
+    <h4>Relaciones Entre Tablas</h4>
+    <ul>
+        <li><strong>1 usuario → muchas habitaciones:</strong> un usuario puede administrar varias habitaciones (habitaciones.usuario_id → usuarios.id)</li>
+        <li><strong>1 habitación → muchos sensores:</strong> cada sala puede tener múltiples sensores asociados (sensores.habitacion_id → habitaciones.id)</li>
+        <li><strong>1 usuario → muchos logs de acceso:</strong> cada registro de login queda asociado al usuario (logs_acceso.usuario → usuarios.id)</li>
+    </ul>
+
+    <h4>Arquitectura Lógica</h4>
+    <p>La arquitectura sigue un patrón jerárquico:</p>
+    <ul>
+        <li>Usuarios → administran Habitaciones</li>
+        <li>Habitaciones → contienen Sensores</li>
+        <li>Sistema → registra actividad en Logs de Acceso</li>
+    </ul>
+
+    <p>Este diseño permite:</p>
+    <ul>
+        <li>Escalabilidad: agregar nuevas habitaciones o sensores sin afectar otras partes</li>
+        <li>Seguridad a nivel de acceso</li>
+        <li>Registro histórico de datos</li>
+        <li>Relación clara entre usuario → configuración → sensores</li>
+    </ul>
 </section>
+
 
 						<section>
 
@@ -379,11 +407,115 @@ En conclusión, si bien existen sistemas avanzados de iluminación inteligente, 
 						</section>
 
 						<section>
-							<header>
-								<h3>Presupuesto</h3>
-							</header>
-							<p>AGREGAR INFORMACIÓN</p>
-						</section>
+    <header>
+        <h3>Presupuesto</h3>
+    </header>
+
+    <p>
+        Este presupuesto presenta el costo del proyecto basado en horas generales por fase, usando la 
+        tarifa <strong>Semi Senior = 60.000 Gs/h</strong>.
+    </p>
+
+    <h4>1. Fases del Proyecto y Horas Estimadas</h4>
+
+    <h5>1) Análisis y Relevamiento</h5>
+    <ul>
+        <li>Comprensión del problema y objetivos.</li>
+        <li>Revisión de sensores, arquitectura y requisitos.</li>
+        <li><strong>Horas estimadas:</strong> 10 h</li>
+    </ul>
+
+    <h5>2) Diseño del Sistema</h5>
+    <ul>
+        <li>Diseño de la base de datos.</li>
+        <li>Definición de arquitectura general.</li>
+        <li>Elaboración de flujogramas.</li>
+        <li><strong>Horas estimadas:</strong> 8 h</li>
+    </ul>
+
+    <h5>3) Desarrollo</h5>
+    <ul>
+        <li>Lectura de sensores (PIR, TSL2561, IR).</li>
+        <li>Control de LED RGB.</li>
+        <li>Implementación de la lógica de iluminación automática.</li>
+        <li>Desarrollo de la interfaz en Python.</li>
+        <li>Integración con base de datos.</li>
+        <li><strong>Horas estimadas:</strong> 25 h</li>
+    </ul>
+
+    <h5>4) Pruebas y Validación</h5>
+    <ul>
+        <li>Pruebas unitarias y funcionales.</li>
+        <li>Ajuste de sensibilidades de los sensores.</li>
+        <li>Optimización del sistema.</li>
+        <li><strong>Horas estimadas:</strong> 10 h</li>
+    </ul>
+
+    <h5>5) Documentación</h5>
+    <ul>
+        <li>Manual de usuario.</li>
+        <li>Documentación técnica del sistema.</li>
+        <li>Preparación del informe final.</li>
+        <li><strong>Horas estimadas:</strong> 7 h</li>
+    </ul>
+
+    <h4>2. Total de Horas Hombre</h4>
+    <table border="1" cellspacing="0" cellpadding="6">
+        <thead>
+            <tr>
+                <th>Fase</th>
+                <th>Horas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Análisis</td><td>10</td></tr>
+            <tr><td>Diseño</td><td>8</td></tr>
+            <tr><td>Desarrollo</td><td>25</td></tr>
+            <tr><td>Pruebas</td><td>10</td></tr>
+            <tr><td>Documentación</td><td>7</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>60</strong></td></tr>
+        </tbody>
+    </table>
+
+    <h4>3. Costo de Horas Hombre (Semi Senior)</h4>
+    <p>60 horas × 60.000 Gs/h = <strong>3.600.000 Gs</strong></p>
+
+    <h4>4. Costo de Hardware</h4>
+    <table border="1" cellspacing="0" cellpadding="6">
+        <thead>
+            <tr>
+                <th>Concepto</th>
+                <th>Costo (Gs)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Raspberry Pi 3 Model B+</td><td>394.000</td></tr>
+            <tr><td>Sensor de Luz TSL2561</td><td>50.000</td></tr>
+            <tr><td>Sensor de Movimiento PIR</td><td>40.000</td></tr>
+            <tr><td>Luz LED RGB</td><td>75.000</td></tr>
+            <tr><td>Receptor IR</td><td>20.000</td></tr>
+            <tr><td>Emisor IR</td><td>10.000</td></tr>
+            <tr><td><strong>Total Hardware</strong></td><td><strong>589.000</strong></td></tr>
+        </tbody>
+    </table>
+
+    <h4>5. Total General del Proyecto</h4>
+    <table border="1" cellspacing="0" cellpadding="6">
+        <thead>
+            <tr>
+                <th>Concepto</th>
+                <th>Total (Gs)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Horas-Hombre</td><td>3.600.000</td></tr>
+            <tr><td>Hardware</td><td>589.000</td></tr>
+            <tr><td><strong>TOTAL GENERAL</strong></td><td><strong>4.189.000</strong></td></tr>
+        </tbody>
+    </table>
+
+</section>
+
 
 						<section>
 							<header>
@@ -393,11 +525,116 @@ En conclusión, si bien existen sistemas avanzados de iluminación inteligente, 
 						</section>
 						
 						<section>
-							<header>
-								<h3>Manual de Usuario</h3>
-							</header>
-							<p>AGREGAR INFORMACIÓN</p>
-						</section>
+    <header>
+        <h3>Manual de Usuario</h3>
+    </header>
+
+    <p>
+        El presente manual describe el funcionamiento, operación y uso de la interfaz del sistema de 
+        iluminación inteligente.
+    </p>
+
+    <h4>1. Introducción</h4>
+    <p>
+        El sistema de iluminación inteligente utiliza sensores de movimiento (PIR) y luminosidad (TSL2561) 
+        para automatizar el encendido, apagado y regulación de las luces de un espacio. A través de la 
+        interfaz gráfica, el usuario puede monitorear el estado de los sensores, visualizar datos en 
+        tiempo real y controlar manualmente el sistema.
+    </p>
+
+    <h4>2. Requisitos del Sistema</h4>
+    <h5>Hardware necesario</h5>
+    <ul>
+        <li>Raspberry Pi 3 Model B</li>
+        <li>Sensor PIR HC-SR501</li>
+        <li>Sensor de luz TSL2561</li>
+        <li>Tira LED o luminaria controlada por GPIO</li>
+        <li>Fuente de alimentación 5 V (2.5 A mínimo)</li>
+    </ul>
+
+    <h5>Software necesario</h5>
+    <ul>
+        <li>Python 3</li>
+        <li>Librerías para sensores</li>
+        <li>Interfaz gráfica del proyecto</li>
+        <li>Conexión a la base de datos</li>
+    </ul>
+
+    <h4>3. Inicio del Sistema</h4>
+    <p>Para iniciar el sistema correctamente:</p>
+    <ol>
+        <li>Conectar la Raspberry Pi a la alimentación de 5 V.</li>
+        <li>Verificar que los sensores estén conectados a los pines GPIO correspondientes.</li>
+        <li>Encender la Raspberry Pi y esperar que el sistema operativo cargue.</li>
+        <li>Ejecutar la interfaz gráfica del proyecto mediante:
+            <pre>python3 app.py</pre>
+        </li>
+    </ol>
+    <p>La pantalla principal se mostrará automáticamente.</p>
+
+    <h4>4. Descripción de la Interfaz</h4>
+
+    <h5>Indicador de Presencia</h5>
+    <p>Muestra si el sensor PIR detecta movimiento:</p>
+    <ul>
+        <li>Activo: Presencia detectada</li>
+        <li>Inactivo: Sin movimiento</li>
+    </ul>
+
+    <h5>Nivel de Luminosidad</h5>
+    <p>Indica cuánta luz hay en el ambiente en lux. Se actualiza en tiempo real.</p>
+
+    <h5>Estado de la Iluminación</h5>
+    <p>Puede mostrar tres estados:</p>
+    <ul>
+        <li>Encendida</li>
+        <li>Apagada</li>
+        <li>Automática (controlada por sensores)</li>
+    </ul>
+
+    <h5>Controles Manuales</h5>
+    <p>El usuario puede:</p>
+    <ul>
+        <li>Encender la luz</li>
+        <li>Apagar la luz</li>
+        <li>Activar el modo Automático</li>
+    </ul>
+    <p>Estos botones sobrescriben o restauran la lógica de los sensores.</p>
+
+    <h5>Registro / Historial</h5>
+    <p>Según la versión del sistema, la interfaz puede mostrar:</p>
+    <ul>
+        <li>Últimos valores de luminosidad</li>
+        <li>Registros de detección de movimiento</li>
+        <li>Acciones realizadas por el usuario</li>
+    </ul>
+
+    <h5>Modos de Operación</h5>
+
+    <h6>Modo Automático (Recomendado)</h6>
+    <ul>
+        <li>La luz se enciende solo si hay movimiento.</li>
+        <li>La intensidad o el encendido dependen de la luz natural detectada.</li>
+        <li>La luz se apaga automáticamente cuando no se detecta presencia por un tiempo definido.</li>
+    </ul>
+
+    <h6>Modo Manual</h6>
+    <ul>
+        <li>Encender la luz sin importar la luminosidad.</li>
+        <li>Apagarla manualmente.</li>
+        <li>Mantener un estado fijo.</li>
+        <li>Este modo desactiva temporalmente la automatización.</li>
+    </ul>
+
+    <h5>Mantenimiento Básico</h5>
+    <ul>
+        <li><strong>Limpieza:</strong> Mantener los sensores libres de polvo.</li>
+        <li><strong>Verificar conexiones:</strong> Revisar periódicamente cables en GPIO.</li>
+        <li><strong>Calibrar sensores:</strong> Ajustar sensibilidad del PIR o reubicar sensor de luz si es necesario.</li>
+    </ul>
+
+</section>
+
 						
 						<section>
 							<header>
