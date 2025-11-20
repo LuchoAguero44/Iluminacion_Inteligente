@@ -56,12 +56,12 @@
   <strong>Funcionalidades principales</strong>:<br>
   • <strong>Login/Logout</strong> con sesiones seguras y registro de intentos (IP + timestamp).<br>
   • <strong>Roles diferenciados</strong>:<br>
-    &nbsp;&nbsp;→ <code>dueño</code>: crea inquilinos, asigna habitaciones, ve logs.<br>
-    &nbsp;&nbsp;→ <code>inquilino</code>: controla sus propias habitaciones.<br>
+    &nbsp;&nbsp;→ <code>dueño</code>: crea inquilinos, controla habitaciones<br>
+    &nbsp;&nbsp;→ <code>inquilino</code>: controla las habitaciones que se le ha asignado.<br>
   • <strong>Control de luces por habitación</strong>:<br>
     &nbsp;&nbsp;→ Encendido/apagado (IR: <code>KEY_POWER</code> / <code>KEY_OFF</code>).<br>
     &nbsp;&nbsp;→ Cambio de color (15 colores predefinidos vía rueda de colores).<br>
-    &nbsp;&nbsp;→ Ajuste de intensidad (+/- 10%).<br>
+    &nbsp;&nbsp;→ Ajuste de intensidad (+/-).<br>
     &nbsp;&nbsp;→ <strong>Modo automático</strong>: activa secuencia preprogramada (<code>modoauto.py</code>).<br>
   • <strong>Envío de comandos IR</strong> mediante <code>irsend</code> (LIRC).<br>
   • <strong>Base de datos SQLite</strong> (<code>database.db</code>) con:<br>
@@ -85,7 +85,7 @@
   <strong>Dependencias externas</strong>:<br>
   • <code>irsend</code> (LIRC) → comandos IR.<br>
   • <code>modoauto.py</code> → lógica del modo automático.<br>
-  • Plantillas Jinja2 (<code>templates/</code>) + CSS/JS estático.<br><br>
+  • Plantillas Jinja2 (<code>templates/</code>) + CSS<br><br>
   
   <strong>Ejecución</strong>:<br>
   <code>python app.py</code> — escucha en <code>0.0.0.0:5000</code> (debug activado).
@@ -94,7 +94,7 @@
 
                             <section>
                                 <header>
-                                    <h3 class="left">2.PRUEBA_MOV.PY</h3>
+                                    <h3 class="left">2.prueba_mov.py</h3>
                                 </header>
                                 <p>  <strong><code>prueba_mov.py</code></strong> es un script de prueba para detectar movimiento usando un sensor PIR conectado a una Raspberry Pi. 
   Configura el pin GPIO 27 como entrada, espera 2 segundos para estabilizar el sensor y entra en un bucle infinito que verifica el estado del pin cada segundo.<br><br>
@@ -145,14 +145,14 @@
                                     <h3 class="left">4.models.py</h3>
                                 </header>
                                 <p><p>
-  <strong><code>models.py</code></strong> define la <strong>estructura de la base de datos</strong> SQLite y funciones para inicializarla y crear usuarios con <strong>contraseñas hasheadas</strong> de forma segura.<br><br>
+  <strong><code>models.py</code></strong> define la <strong>estructura de la base de datos</strong> SQLite y funciones para inicializarla y crear usuarios<br><br>
   
   <strong>Funciones principales</strong>:<br>
   • <code>init_db()</code>: crea (si no existen) las tablas <code>usuarios</code> y <code>habitaciones</code> con restricciones de integridad.<br>
   • <code>create_user()</code>: inserta un usuario con contraseña cifrada usando <code>werkzeug.security</code> (PBKDF2).<br><br>
   
   <strong>Tablas</strong>:<br>
-  • <code>usuarios</code>: <code>id</code>, <code>usuario</code> (único), <code>contraseña</code> (hasheada), <code>rol</code> (<code>dueño</code> o <code>inquilino</code>).<br>
+  • <code>usuarios</code>: <code>id</code>, <code>usuario</code> (único), <code>contraseña</code><code>rol</code> (<code>dueño</code> o <code>inquilino</code>).<br>
   • <code>habitaciones</code>: <code>id</code>, <code>usuario_id</code> (FK), <code>nombre</code>, <code>estado</code> (<code>on/off</code>), <code>intensidad</code> (0–100), <code>color</code>, <code>modo</code> (<code>manual/automatico</code>).<br><br>
   
   <strong>Restricciones</strong>: claves foráneas, valores válidos con <code>CHECK</code>, unicidad por <code>(usuario_id, nombre)</code>.<br>
@@ -235,7 +235,7 @@
   • <strong>Encender/Apagar</strong>: botón toggle.<br>
   • <strong>Modo</strong>: alterna entre Automático/Manual (color rojo/verde).<br>
   • <strong>Rueda de colores</strong>: 15 botones circulares (CSS: <code>.pizza-wheel</code> + <code>.slice</code>) con colores predefinidos.<br>
-  • <strong>Intensidad</strong>: botones <code>+ Subir</code> / <code>- Bajar</code> (10% por paso).<br><br>
+  • <strong>Intensidad</strong>: botones <code>+ Subir</code> / <code>- Bajar</code><br><br>
   
   <strong>Modo automático</strong>: todos los controles (excepto cambiar modo) se <code>disabled</code> visualmente (opacos, cursor bloqueado).<br>
   → Usa estilos de <code>style.css</code> + CSS inline para layout flexible y responsive.<br>
