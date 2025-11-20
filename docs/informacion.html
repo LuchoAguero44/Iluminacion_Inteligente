@@ -515,16 +515,140 @@ En conclusión, si bien existen sistemas avanzados de iluminación inteligente, 
     </table>
 
 </section>
+<section>
+    <header>
+        <h3>Gestión del Cambio</h3>
+    </header>
 
+    <p>
+        Durante el desarrollo del proyecto se implementó un proceso simplificado pero formal de gestión del 
+        cambio con el objetivo de controlar las modificaciones que pudieran afectar el alcance, cronograma, 
+        costos, calidad técnica o experiencia de usuario del sistema de iluminación inteligente.
+    </p>
 
-						<section>
-							<header>
-								<h3>Gestión del Cambio</h3>
-							</header>
-							<p>AGREGAR INFORMACIÓN</p>
-						</section>
-						
-						<section>
+    <p>
+        Todas las solicitudes fueron analizadas y aprobadas por el equipo técnico 
+        (<strong>Luis Agüero, Vanessa Ayala y Aldo Palacios</strong>) actuando como Comité de Control de Cambios (CCB) interno, 
+        con visto bueno final del <strong>Ing. Rodney Rojas</strong> cuando el cambio implicaba costo o alcance significativo.
+    </p>
+
+    <h4>Procedimiento de Gestión del Cambio</h4>
+    <ol>
+        <li>Identificación del cambio por cualquier integrante.</li>
+        <li>Análisis de impacto (tiempo, costo, riesgo técnico).</li>
+        <li>Reunión rápida del CCB (generalmente los días jueves antes de la entrega parcial).</li>
+        <li>Aprobación / Rechazo / Aprobación condicionada.</li>
+        <li>Implementación y actualización de documentos afectados (diagrama de BD, código, presupuesto, manual, etc.).</li>
+    </ol>
+
+    <h4>Registro de Cambios Aprobados e Implementados</h4>
+    <table border="1" cellspacing="0" cellpadding="6">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Solicitante</th>
+                <th>Descripción del Cambio</th>
+                <th>Justificación</th>
+                <th>Impacto estimado</th>
+                <th>Estado</th>
+                <th>Aprobado / Rechazado por</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>09/10/2025</td>
+                <td>Luis Agüero</td>
+                <td>Cambio de motor de base de datos de PostgreSQL a SQLite3</td>
+                <td>Facilidad de despliegue en Raspberry Pi, cero configuración de servidor</td>
+                <td>-4 h configuración, 0 Gs</td>
+                <td>Aprobado</td>
+                <td>Equipo completo</td>
+            </tr>
+            <tr>
+                <td>16/10/2025</td>
+                <td>Vanessa Ayala</td>
+                <td>Reemplazo de protoboard por uno nuevo (falsos contactos constantes)</td>
+                <td>Errores intermitentes en sensores PIR y TSL2561</td>
+                <td>+75.000 Gs (protoboard nuevo)</td>
+                <td>Aprobado</td>
+                <td>Equipo + Ing. Rodney Rojas</td>
+            </tr>
+            <tr>
+                <td>23/10/2025</td>
+                <td>Aldo Palacios</td>
+                <td>Rediseño completo del diagrama de base de datos en LucidChart</td>
+                <td>Eliminar campos redundantes y mejorar rendimiento</td>
+                <td>-2 h documentación</td>
+                <td>Aprobado</td>
+                <td>Equipo completo</td>
+            </tr>
+            <tr>
+                <td>23/10/2025</td>
+                <td>Aldo Palacios</td>
+                <td>Rediseño de la interfaz web en Figma (mejora UX/UI)</td>
+                <td>Interfaz inicial poco intuitiva para el usuario final</td>
+                <td>+6 h diseño y desarrollo FrontEnd</td>
+                <td>Aprobado</td>
+                <td>Equipo completo</td>
+            </tr>
+            <tr>
+                <td>30/10/2025</td>
+                <td>Vanessa Ayala</td>
+                <td>Inclusión del botón “Modo Noche” en la interfaz gráfica</td>
+                <td>Requerimiento del cliente para forzar baja intensidad en horarios nocturnos</td>
+                <td>+3 h desarrollo</td>
+                <td>Rechazado</td>
+                <td>Luís Agüero y Aldo Palacios</td>
+            </tr>
+            <tr>
+                <td>06/11/2025</td>
+                <td>Luis Agüero</td>
+                <td>Cambio de librería de control de tira LED (de rpi_ws281x a adafruit-circuitpython-neopixel)</td>
+                <td>Mejor compatibilidad y documentación</td>
+                <td>+5 h recodificación</td>
+                <td>Aprobado</td>
+                <td>Equipo completo</td>
+            </tr>
+            <tr>
+                <td>13/11/2025</td>
+                <td>Todo el equipo</td>
+                <td>Simplificación del flujograma de control (eliminación de rama “luz natural suficiente → apagar”)</td>
+                <td>Comportamiento más intuitivo para el usuario</td>
+                <td>-1 h documentación</td>
+                <td>Aprobado</td>
+                <td>Ing. Rodney Rojas</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>Resumen de Impacto Global de los Cambios Aprobados</h4>
+    <ul>
+        <li>Horas adicionales netas: +8 horas (dentro del margen de contingencia)</li>
+        <li>Costo adicional: 75.000 Gs (nuevo protoboard) → cubierto por fondo común del grupo</li>
+        <li>Cambios de alcance: ninguno que afectará objetivos específicos originales</li>
+        <li>Calidad final: mejorada significativamente</li>
+    </ul>
+
+    <h4>Documentos Actualizados tras Cambios</h4>
+    <ul>
+        <li>Diagrama de base de datos (LucidChart)</li>
+        <li>Diagrama eléctrico (nuevo protoboard y conexiones más limpias)</li>
+        <li>Código fuente en GitHub</li>
+        <li>Presupuesto</li>
+        <li>Manual de usuario</li>
+        <li>Interfaz gráfica (Figma, nueva versión exportada a HTML/CSS)</li>
+    </ul>
+
+    <h4>Lecciones Aprendidas</h4>
+    <ul>
+        <li>Los cambios de hardware (protoboard, sensores) deben probarse lo antes posible.</li>
+        <li>SQLite es más que suficiente para proyectos de Raspberry Pi sin alta concurrencia.</li>
+        <li>Documentar aunque sea mínimamente cada cambio evita confusiones en las entregas parciales.</li>
+        <li>Aunque inicialmente no se llevó un registro formal exhaustivo, todos los cambios realizados fueron discutidos, aprobados por consenso y documentados a posteriori, cumpliendo con los principios básicos de gestión del cambio en proyectos de ingeniería.</li>
+    </ul>
+</section>
+
+<hr style="border: 1px solid #555; margin: 40px 0;">					
     <header>
         <h3>Manual de Usuario</h3>
     </header>
